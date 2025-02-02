@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <title>Diagnosis - RCPD</title>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Header -->
+  <header class="bg-green-600 text-white p-4 shadow-md">
+    <nav class="container mx-auto flex justify-between items-center">
+      <div class="text-2xl font-bold">RCPD</div>
+      <ul class="flex space-x-6">
+        <li><a href="index.html" class="hover:text-yellow-300">Home</a></li>
+        <li><a href="diagnosis.html" class="hover:text-yellow-300">Diagnosis</a></li>
+        <li><a href="research.html" class="hover:text-yellow-300">Research</a></li>
+        <li><a href="find-a-doctor.html" class="hover:text-yellow-300">Find a Doctor</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto p-8">
+    <section>
+      <h1 class="text-3xl font-bold mb-4">Self-Diagnosis Tool</h1>
+      <p class="text-lg mb-6">
+        Answer the following questions to see if RCPD might apply to you. This tool is for informational purposes only.
+      </p>
+      <form id="diagnosis-form" class="space-y-4">
+        <div>
+          <label class="block text-gray-800">1. Do you frequently experience discomfort or bloating after meals?</label>
+          <div class="mt-2">
+            <label class="mr-4"><input type="radio" name="q1" value="yes" class="mr-1">Yes</label>
+            <label><input type="radio" name="q1" value="no" class="mr-1">No</label>
+          </div>
+        </div>
+        <div>
+          <label class="block text-gray-800">2. Do you feel pressure in your throat or chest that is relieved by burping?</label>
+          <div class="mt-2">
+            <label class="mr-4"><input type="radio" name="q2" value="yes" class="mr-1">Yes</label>
+            <label><input type="radio" name="q2" value="no" class="mr-1">No</label>
+          </div>
+        </div>
+        <div>
+          <label class="block text-gray-800">3. Have you ever been unable to burp, even when you feel the need?</label>
+          <div class="mt-2">
+            <label class="mr-4"><input type="radio" name="q3" value="yes" class="mr-1">Yes</label>
+            <label><input type="radio" name="q3" value="no" class="mr-1">No</label>
+          </div>
+        </div>
+        <button type="button" id="submit-diagnosis" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition">Submit</button>
+      </form>
+      <section id="results" class="hidden mt-6"></section>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white p-4">
+    <div class="container mx-auto text-center">
+      <ul class="flex justify-center space-x-6">
+        <li><a href="about.html" class="hover:text-yellow-300">About</a></li>
+        <li><a href="faq.html" class="hover:text-yellow-300">FAQ</a></li>
+        <li><a href="contact.html" class="hover:text-yellow-300">Contact</a></li>
+      </ul>
+      <p class="mt-4 text-sm">Kyle</p>
+    </div>
+  </footer>
+
+  <!-- Your existing script -->
+  <script src="script.js"></script>
+</body>
+</html>

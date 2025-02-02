@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Tailwind CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <title>Contact - RCPD</title>
+</head>
+<body class="bg-gray-100 text-gray-800">
+  <!-- Header -->
+  <header class="bg-green-600 text-white p-4 shadow-md">
+    <nav class="container mx-auto flex justify-between items-center">
+      <div class="text-2xl font-bold">RCPD</div>
+      <ul class="flex space-x-6">
+        <li><a href="index.html" class="hover:text-yellow-300">Home</a></li>
+        <li><a href="diagnosis.html" class="hover:text-yellow-300">Diagnosis</a></li>
+        <li><a href="research.html" class="hover:text-yellow-300">Research</a></li>
+        <li><a href="find-a-doctor.html" class="hover:text-yellow-300">Find a Doctor</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container mx-auto p-8">
+    <section>
+      <h1 class="text-3xl font-bold mb-4">Contact Us</h1>
+      <p class="text-lg mb-6">
+        If you have any questions or need assistance regarding RCPD, please get in touch.
+      </p>
+      <form id="contact-form" class="max-w-lg mx-auto">
+        <div class="mb-4">
+          <label for="name" class="block text-gray-800 mb-2">Name:</label>
+          <input type="text" id="name" class="border p-2 w-full rounded" placeholder="Your Name" />
+        </div>
+        <div class="mb-4">
+          <label for="email" class="block text-gray-800 mb-2">Email:</label>
+          <input type="email" id="email" class="border p-2 w-full rounded" placeholder="Your Email" />
+        </div>
+        <div class="mb-4">
+          <label for="message" class="block text-gray-800 mb-2">Message:</label>
+          <textarea id="message" class="border p-2 w-full rounded" placeholder="Your Message" rows="5"></textarea>
+        </div>
+        <button type="submit" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition">Submit</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white p-4">
+    <div class="container mx-auto text-center">
+      <ul class="flex justify-center space-x-6">
+        <li><a href="about.html" class="hover:text-yellow-300">About</a></li>
+        <li><a href="faq.html" class="hover:text-yellow-300">FAQ</a></li>
+        <li><a href="contact.html" class="hover:text-yellow-300">Contact</a></li>
+      </ul>
+      <p class="mt-4 text-sm">Kyle</p>
+    </div>
+  </footer>
+
+  <!-- Your existing script -->
+  <script src="script.js"></script>
+  <!-- Inline script for contact form handling -->
+  <script>
+    document.getElementById('contact-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert("Thank you for contacting us! We'll get back to you soon.");
+      this.reset();
+    });
+  </script>
+</body>
+</html>
