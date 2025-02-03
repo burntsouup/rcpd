@@ -29,9 +29,8 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: ${{ secrets.ACR_NAME }}.azurecr.io
-          username: ${{ secrets.ACR_NAME }}
-          # Here we assume your ACR login can be derived from AZURE_CREDENTIALS or you may need to supply ACR_PASSWORD separately.
-          password: ${{ secrets.AZURE_CREDENTIALS }}
+          username: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientId }}
+          password: ${{ fromJson(secrets.AZURE_CREDENTIALS).clientSecret }}
 
       # 5. Build and push the Docker image to ACR
       - name: Build and push Docker image
