@@ -58,7 +58,7 @@ app.get('/api/doctors', async (req, res) => {
       // Query the database for doctors matching the location (searching in city or postal_code)
       const query = `
         SELECT * FROM Doctors 
-        WHERE city LIKE @location OR postal_code LIKE @location
+        WHERE city LIKE @location OR postal_zip_code LIKE @location
       `;
       const result = await pool.request()
         .input('location', sql.VarChar, `%${location}%`)
