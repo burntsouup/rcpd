@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <title>Diagnosis - RCPD</title>
+  <title>Diagnosis - RCPD Self-Diagnosis Tool</title>
 </head>
 <body class="bg-gray-100 text-gray-800">
   <!-- Header -->
@@ -22,38 +22,120 @@
   </header>
 
   <!-- Main Content -->
-  <main class="container mx-auto p-8">
-    <section>
-      <h1 class="text-3xl font-bold mb-4">Self-Diagnosis Tool</h1>
-      <p class="text-lg mb-6">
-        Answer the following questions to see if RCPD might apply to you. This tool is for informational purposes only.
-      </p>
-      <form id="diagnosis-form" class="space-y-4">
-        <div>
-          <label class="block text-gray-800">1. Do you frequently experience discomfort or bloating after meals?</label>
-          <div class="mt-2">
-            <label class="mr-4"><input type="radio" name="q1" value="yes" class="mr-1">Yes</label>
-            <label><input type="radio" name="q1" value="no" class="mr-1">No</label>
-          </div>
+  <main class="container mx-auto p-6">
+    <!-- Start Screen -->
+    <div id="start-screen" class="flex flex-col items-center justify-center space-y-4">
+      <h2 class="text-2xl font-bold">Welcome to the RCPD Self-Diagnosis Tool</h2>
+      <p class="text-lg">Click "Start" to begin the questionnaire.</p>
+      <button id="start-quiz" class="bg-green-600 text-white py-2 px-4 rounded">Start</button>
+    </div>
+
+    <!-- Progress Indicator (initially hidden) -->
+    <div id="progress-section" class="mb-6 hidden">
+      <div id="progress-container" class="w-full bg-gray-300 rounded-full h-4 mb-2">
+        <div id="progress-bar" class="bg-green-600 h-4 rounded-full" style="width: 0%;"></div>
+      </div>
+      <p id="progress-text" class="text-center text-sm font-medium">Step 1 of 5</p>
+    </div>
+
+    <!-- Quiz Container (initially hidden) -->
+    <div id="quiz-container" class="hidden">
+      <!-- Step 1: Question 1 -->
+      <div class="quiz-step" id="step-1">
+        <p class="mb-4">
+          1. Have you noticed that you are physically unable to burp, even when you feel the urge or attempt intentional methods (e.g., drinking carbonated beverages or “swallowing” air)?
+        </p>
+        <select id="q1" class="p-2 border rounded">
+          <option value="0">Never</option>
+          <option value="1">Rarely</option>
+          <option value="2">Sometimes</option>
+          <option value="3">Often</option>
+          <option value="4">Always</option>
+        </select>
+        <div class="flex justify-start space-x-4 mt-4">
+          <button class="next-button bg-green-600 text-white py-2 px-4 rounded">Next</button>
         </div>
-        <div>
-          <label class="block text-gray-800">2. Do you feel pressure in your throat or chest that is relieved by burping?</label>
-          <div class="mt-2">
-            <label class="mr-4"><input type="radio" name="q2" value="yes" class="mr-1">Yes</label>
-            <label><input type="radio" name="q2" value="no" class="mr-1">No</label>
-          </div>
+      </div>
+
+      <!-- Step 2: Question 2 -->
+      <div class="quiz-step hidden" id="step-2">
+        <p class="mb-4">
+          2. Do you frequently experience gurgling, rumbling, or squeaking noises in your throat or upper chest after meals or consuming carbonated drinks?
+        </p>
+        <select id="q2" class="p-2 border rounded">
+          <option value="0">Never</option>
+          <option value="1">Rarely</option>
+          <option value="2">Sometimes</option>
+          <option value="3">Often</option>
+          <option value="4">Always</option>
+        </select>
+        <div class="flex justify-start space-x-4 mt-4">
+          <button class="prev-button bg-gray-400 text-white py-2 px-4 rounded">Previous</button>
+          <button class="next-button bg-green-600 text-white py-2 px-4 rounded">Next</button>
         </div>
-        <div>
-          <label class="block text-gray-800">3. Have you ever been unable to burp, even when you feel the need?</label>
-          <div class="mt-2">
-            <label class="mr-4"><input type="radio" name="q3" value="yes" class="mr-1">Yes</label>
-            <label><input type="radio" name="q3" value="no" class="mr-1">No</label>
-          </div>
+      </div>
+
+      <!-- Step 3: Question 3 -->
+      <div class="quiz-step hidden" id="step-3">
+        <p class="mb-4">
+          3. Do you often feel bloating, pressure, or discomfort in your upper abdomen or chest after eating or drinking carbonated beverages, possibly due to trapped gas?
+        </p>
+        <select id="q3" class="p-2 border rounded">
+          <option value="0">Never</option>
+          <option value="1">Rarely</option>
+          <option value="2">Sometimes</option>
+          <option value="3">Often</option>
+          <option value="4">Always</option>
+        </select>
+        <div class="flex justify-start space-x-4 mt-4">
+          <button class="prev-button bg-gray-400 text-white py-2 px-4 rounded">Previous</button>
+          <button class="next-button bg-green-600 text-white py-2 px-4 rounded">Next</button>
         </div>
-        <button type="button" id="submit-diagnosis" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition">Submit</button>
-      </form>
-      <section id="results" class="hidden mt-6"></section>
-    </section>
+      </div>
+
+      <!-- Step 4: Question 4 -->
+      <div class="quiz-step hidden" id="step-4">
+        <p class="mb-4">
+          4. Do you find alternative ways to relieve trapped gas, such as frequently passing gas, or inducing a belch through extreme measures (e.g., gagging, also known as “air vomiting”), or lying down, rather than naturally burping?
+        </p>
+        <select id="q4" class="p-2 border rounded">
+          <option value="0">Never</option>
+          <option value="1">Rarely</option>
+          <option value="2">Sometimes</option>
+          <option value="3">Often</option>
+          <option value="4">Always</option>
+        </select>
+        <div class="flex justify-start space-x-4 mt-4">
+          <button class="prev-button bg-gray-400 text-white py-2 px-4 rounded">Previous</button>
+          <button class="next-button bg-green-600 text-white py-2 px-4 rounded">Next</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Question 5 -->
+      <div class="quiz-step hidden" id="step-5">
+        <p class="mb-4">
+          5. Does your inability to burp affect your quality of life, such as avoiding social events with carbonated drinks (e.g., beer), modifying your diet, or experiencing anxiety due to discomfort?
+        </p>
+        <select id="q5" class="p-2 border rounded">
+          <option value="0">Never</option>
+          <option value="1">Rarely</option>
+          <option value="2">Sometimes</option>
+          <option value="3">Often</option>
+          <option value="4">Always</option>
+        </select>
+        <div class="flex justify-start space-x-4 mt-4">
+          <button class="prev-button bg-gray-400 text-white py-2 px-4 rounded">Previous</button>
+          <button id="submit-quiz" class="bg-green-600 text-white py-2 px-4 rounded">Submit</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="results" class="hidden mt-8 p-4 border rounded bg-white">
+      <h2 class="text-2xl font-bold mb-2">Your Results</h2>
+      <p id="result-text"></p>
+      <a href="find-a-doctor.html" class="mt-4 inline-block bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">Find a Doctor</a>
+    </div>
   </main>
 
   <!-- Footer -->
@@ -68,7 +150,88 @@
     </div>
   </footer>
 
-  <!-- Your existing script -->
-  <script src="script.js"></script>
+  <script>
+    // JavaScript for multi-step quiz functionality with progress indicator and start screen
+    const steps = document.querySelectorAll('.quiz-step');
+    let currentStep = 0;
+
+    // Function to update progress bar and text
+    function updateProgress() {
+      const totalSteps = steps.length;
+      const percentage = ((currentStep + 1) / totalSteps) * 100;
+      document.getElementById('progress-bar').style.width = percentage + '%';
+      document.getElementById('progress-text').innerText = `Step ${currentStep + 1} of ${totalSteps}`;
+    }
+
+    // Function to show the current step and hide others
+    function showStep(stepIndex) {
+      steps.forEach((step, index) => {
+        step.classList.toggle('hidden', index !== stepIndex);
+      });
+      updateProgress();
+    }
+
+    // Hide quiz container and progress section initially; only start screen is visible
+    document.getElementById('quiz-container').classList.add('hidden');
+    document.getElementById('progress-section').classList.add('hidden');
+
+    // Start button event listener
+    document.getElementById('start-quiz').addEventListener('click', () => {
+      // Hide start screen
+      document.getElementById('start-screen').classList.add('hidden');
+      // Show progress indicator and quiz container
+      document.getElementById('progress-section').classList.remove('hidden');
+      document.getElementById('quiz-container').classList.remove('hidden');
+      // Initialize the quiz
+      currentStep = 0;
+      showStep(currentStep);
+    });
+
+    // Add event listeners for Next buttons
+    document.querySelectorAll('.next-button').forEach(button => {
+      button.addEventListener('click', () => {
+        if (currentStep < steps.length - 1) {
+          currentStep++;
+          showStep(currentStep);
+        }
+      });
+    });
+
+    // Add event listeners for Previous buttons
+    document.querySelectorAll('.prev-button').forEach(button => {
+      button.addEventListener('click', () => {
+        if (currentStep > 0) {
+          currentStep--;
+          showStep(currentStep);
+        }
+      });
+    });
+
+    // Submit quiz: collect responses and calculate total score
+    document.getElementById('submit-quiz').addEventListener('click', () => {
+      const q1 = parseInt(document.getElementById('q1').value, 10);
+      const q2 = parseInt(document.getElementById('q2').value, 10);
+      const q3 = parseInt(document.getElementById('q3').value, 10);
+      const q4 = parseInt(document.getElementById('q4').value, 10);
+      const q5 = parseInt(document.getElementById('q5').value, 10);
+      
+      const totalScore = q1 + q2 + q3 + q4 + q5;
+      let resultMessage = '';
+      
+      // Adjust thresholds based on a maximum score of 20
+      if (totalScore >= 15) {
+        resultMessage = 'Your responses indicate strong symptoms of RCPD. It may be wise to consult a healthcare professional for a comprehensive evaluation.';
+      } else if (totalScore >= 8) {
+        resultMessage = 'Your responses suggest moderate symptoms of RCPD. You might consider monitoring your condition and consulting a healthcare provider if your symptoms worsen.';
+      } else {
+        resultMessage = 'Based on your responses, it seems unlikely that you have severe symptoms of RCPD. However, if you have concerns, please consult a healthcare professional.';
+      }
+      
+      document.getElementById('result-text').innerText = resultMessage;
+      document.getElementById('results').classList.remove('hidden');
+      document.getElementById('quiz-container').classList.add('hidden');
+      document.getElementById('progress-section').classList.add('hidden');
+    });
+  </script>
 </body>
 </html>

@@ -24,12 +24,12 @@ async function getAccessToken() {
     return tokenResponse.token;
   }
 
-// API endpoint: Search for doctors by location
+// API endpoint: Search for doctors
 app.get('/api/doctors', async (req, res) => {
-    const { location } = req.query;
+    const { search } = req.query;
     
-    if (!location) {
-      return res.status(400).json({ error: 'Please provide a location parameter.' });
+    if (!search) {
+      return res.status(400).json({ error: 'Please provide a search parameter.' });
     }
     
     try {
@@ -55,13 +55,19 @@ app.get('/api/doctors', async (req, res) => {
       // Connect to the database
       const pool = await sql.connect(config);
   
-      // Query the database for doctors matching the location (searching in city or postal_code)
+      // Query the database for doctors matching the search
       const query = `
-        SELECT * FROM Doctors 
-        WHERE city LIKE @location OR postal_zip_code LIKE @location
+        SELECT * FROM Doctors
+        WHERE name LIKE @search 
+          OR Specialty LIKE @search 
+          OR Clinic_Name LIKE @search 
+          OR City LIKE @search 
+          OR State_Province LIKE @search 
+          OR Country LIKE @search 
+          OR Postal_Zip_Code LIKE @search
       `;
       const result = await pool.request()
-        .input('location', sql.VarChar, `%${location}%`)
+        .input('search', sql.VarChar, `%${search}%`)
         .query(query);
   
       // Close the connection

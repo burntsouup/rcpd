@@ -25,26 +25,97 @@
   <main class="container mx-auto p-8">
     <section>
       <h1 class="text-3xl font-bold mb-4">Frequently Asked Questions</h1>
-      <ul class="space-y-6">
-        <li>
-          <strong>What is RCPD?</strong>
-          <p class="mt-2 text-gray-600">
-            RCPD stands for Retrograde Cricopharyngeal Dysfunction, a condition where the throat muscle does not relax properly, leading to difficulty in burping.
-          </p>
-        </li>
-        <li>
-          <strong>How do I know if I have RCPD?</strong>
-          <p class="mt-2 text-gray-600">
-            We provide a self-diagnosis tool on the Diagnosis page. Remember, this tool is for informational purposes only and is not a substitute for professional medical advice.
-          </p>
-        </li>
-        <li>
-          <strong>What treatment options are available?</strong>
-          <p class="mt-2 text-gray-600">
-            Treatment options vary depending on the individual. Consult a specialist for a personalized treatment plan.
-          </p>
-        </li>
-      </ul>
+      <div id="faq-container" class="space-y-4">
+        <!-- FAQ Item 1 -->
+        <div class="faq-item border rounded shadow p-4 bg-white">
+          <button type="button" class="faq-question w-full text-left font-semibold flex justify-between items-center focus:outline-none" aria-expanded="false">
+            <span>What is RCPD (No-Burp Syndrome)?</span>
+            <svg class="faq-icon w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer mt-2 text-gray-600 hidden">
+            <p>RCPD stands for Retrograde Cricopharyngeal Dysfunction. It’s a condition where the cricopharyngeus muscle in the throat fails to relax properly, preventing a natural burp. This can result in chronic bloating, discomfort, and gurgling noises as trapped air cannot escape.</p>
+          </div>
+        </div>
+        <!-- FAQ Item 2 -->
+        <div class="faq-item border rounded shadow p-4 bg-white">
+          <button type="button" class="faq-question w-full text-left font-semibold flex justify-between items-center focus:outline-none" aria-expanded="false">
+            <span>What are the common signs and symptoms of RCPD?</span>
+            <svg class="faq-icon w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer mt-2 text-gray-600 hidden">
+            <p>Typical symptoms include:</p>
+            <ul class="list-disc ml-6">
+              <li>Inability to burp or extreme difficulty burping</li>
+              <li>Frequent gurgling, rumbling, or squeaking noises in the throat or upper chest</li>
+              <li>Bloating, chest pressure, or discomfort after meals or carbonated drinks</li>
+              <li>Occasional relief through passing gas, air-vomiting, or lying down</li>
+              <li>Social or dietary adjustments to avoid triggers like carbonated beverages</li>
+            </ul>
+          </div>
+        </div>
+        <!-- FAQ Item 3 -->
+        <div class="faq-item border rounded shadow p-4 bg-white">
+          <button type="button" class="faq-question w-full text-left font-semibold flex justify-between items-center focus:outline-none" aria-expanded="false">
+            <span>Is RCPD dangerous or life-threatening?</span>
+            <svg class="faq-icon w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer mt-2 text-gray-600 hidden">
+            <p>RCPD is not considered life-threatening; however, it can significantly impact quality of life. Chronic discomfort, anxiety, and the need to adopt lifestyle changes are common. In some cases, ongoing strain may lead to secondary issues, so professional evaluation is recommended if symptoms persist.</p>
+          </div>
+        </div>
+        <!-- FAQ Item 4 -->
+        <div class="faq-item border rounded shadow p-4 bg-white">
+          <button type="button" class="faq-question w-full text-left font-semibold flex justify-between items-center focus:outline-none" aria-expanded="false">
+            <span>What treatment options are available?</span>
+            <svg class="faq-icon w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer mt-2 text-gray-600 hidden">
+            <ul class="list-disc ml-6">
+              <li><strong>Botox Injection:</strong> Helps relax the cricopharyngeus muscle so trapped air can escape.</li>
+              <li><strong>Physical/Swallow Therapy:</strong> Targeted exercises guided by a specialist.</li>
+              <li><strong>Surgery (Myotomy):</strong> A procedure to cut or weaken the muscle in severe cases.</li>
+              <li><strong>Lifestyle & Diet Modifications:</strong> Adjusting food and drink habits to reduce gas production.</li>
+            </ul>
+          </div>
+        </div>
+        <!-- FAQ Item 5 -->
+        <div class="faq-item border rounded shadow p-4 bg-white">
+          <button type="button" class="faq-question w-full text-left font-semibold flex justify-between items-center focus:outline-none" aria-expanded="false">
+            <span>What should I do if I suspect I have RCPD?</span>
+            <svg class="faq-icon w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer mt-2 text-gray-600 hidden">
+            <p>If you suspect you have RCPD, consider taking the following steps:</p>
+            <ul class="list-disc ml-6">
+              <li>Document your symptoms including triggers and frequency.</li>
+              <li>Consult a specialist such as an ENT or gastroenterologist.</li>
+              <li>Discuss treatment options, as early intervention may help manage symptoms.</li>
+            </ul>
+          </div>
+        </div>
+        <!-- FAQ Item 6 -->
+        <div class="faq-item border rounded shadow p-4 bg-white">
+          <button type="button" class="faq-question w-full text-left font-semibold flex justify-between items-center focus:outline-none" aria-expanded="false">
+            <span>What is air-vomiting?</span>
+            <svg class="faq-icon w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer mt-2 text-gray-600 hidden">
+            <p>Air-vomiting, sometimes called “air-puking,” is the forced expulsion of trapped air from the stomach or esophagus. It mimics vomiting without expelling any solid or liquid contents and is sometimes used by individuals with RCPD to relieve discomfort.</p>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -60,7 +131,23 @@
     </div>
   </footer>
 
-  <!-- Your existing script -->
-  <script src="script.js"></script>
+  <script>
+    // JavaScript for FAQ accordion functionality
+    document.querySelectorAll('.faq-question').forEach((button) => {
+      button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        // Toggle the answer visibility
+        answer.classList.toggle('hidden');
+
+        // Update aria-expanded attribute
+        const expanded = button.getAttribute('aria-expanded') === 'true';
+        button.setAttribute('aria-expanded', !expanded);
+
+        // Optionally rotate the icon for visual feedback
+        const icon = button.querySelector('.faq-icon');
+        icon.classList.toggle('rotate-180');
+      });
+    });
+  </script>
 </body>
 </html>
