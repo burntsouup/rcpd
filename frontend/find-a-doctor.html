@@ -7,7 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
   <title>Find a Doctor - RCPD</title>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="flex flex-col min-h-screen bg-gray-100 text-gray-800">
   <!-- Header -->
   <header class="bg-green-600 text-white p-4 shadow-md">
     <nav class="container mx-auto flex justify-between items-center">
@@ -22,34 +22,49 @@
   </header>
 
   <!-- Main Content -->
-  <main class="container mx-auto p-8">
+  <main class="flex-grow container mx-auto p-8">
     <section>
       <h1 class="text-3xl font-bold mb-4">Find a Doctor</h1>
       <p class="text-lg mb-6">
         Locate specialists near you who can help diagnose and treat RCPD.
       </p>
-      <form id="search-form" class="mb-6">
+      <form id="search-form" class="mb-2">
         <label for="location" class="block text-gray-800 mb-2">Enter your location:</label>
-        <input type="text" id="search" class="border p-2 w-full md:w-1/2 mb-4 rounded" placeholder="E.g., New York, NY" />
+        <input type="text" id="search" class="border p-2 w-full md:w-1/2 mb-2 rounded" placeholder="E.g., New York" />
         <button type="button" id="search-button" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition">
           Search
         </button>
       </form>
+      <!-- Credit for Doctor List -->
+      <div class="mb-4">
+        <p class="text-xs text-gray-600 ml-4">
+          Doctor list provided by <a href="https://www.reddit.com/user/karybrie/" target="_blank" class="underline hover:text-green-600">karybrie (u/karybrie)</a>.
+        </p>
+      </div>
       <section id="doctor-list" class="hidden mt-6">
         <!-- Results dynamically populated by script.js -->
       </section>
     </section>
+
+    <!-- Disclaimer -->
+    <div class="mt-8 p-4 bg-white border rounded text-sm text-gray-600">
+      <strong>Disclaimer:</strong> The information provided on this website is for educational and informational purposes only and is not intended to serve as medical advice. Always consult a qualified healthcare professional regarding any questions or concerns about your health. This content is not a substitute for professional diagnosis or treatment.
+    </div>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gray-800 text-white p-4">
-    <div class="container mx-auto text-center">
-      <ul class="flex justify-center space-x-6">
-        <li><a href="about.html" class="hover:text-yellow-300">About</a></li>
-        <li><a href="faq.html" class="hover:text-yellow-300">FAQ</a></li>
-        <li><a href="contact.html" class="hover:text-yellow-300">Contact</a></li>
-      </ul>
-      <p class="mt-4 text-sm">Kyle</p>
+  <footer class="bg-gray-800 text-white p-6 mt-auto">
+    <div class="container mx-auto">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0">
+          <p class="text-sm">2025</p>
+        </div>
+        <div class="flex space-x-4">
+          <a href="about.html" class="text-sm hover:text-green-400">About</a>
+          <a href="faq.html" class="text-sm hover:text-green-400">FAQ</a>
+          <a href="contact.html" class="text-sm hover:text-green-400">Contact</a>
+        </div>
+      </div>
     </div>
   </footer>
 
