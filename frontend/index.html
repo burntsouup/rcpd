@@ -10,13 +10,23 @@
 <body class="flex flex-col min-h-screen bg-gray-100 text-gray-800">
   <!-- Header -->
   <header class="bg-green-600 text-white p-2 shadow-md">
-    <nav class="container mx-auto flex justify-between items-center">
-      <!-- Logo Section -->
+    <nav class="container mx-auto flex items-center justify-between">
+      <!-- Logo and Title -->
       <div class="flex items-center">
         <img src="images/noburp_logo_1.png" alt="RCPD Logo" class="h-12 mr-2">
         <span class="text-2xl font-bold">RCPD</span>
       </div>
-      <ul class="flex space-x-6">
+
+      <!-- Hamburger Icon (shown on small screens) -->
+      <button id="nav-toggle" class="md:hidden focus:outline-none">
+        <!-- Simple Hamburger SVG Icon -->
+        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <path d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <!-- Navigation Links (hidden on small screens by default) -->
+      <ul id="nav-links" class="hidden md:flex space-x-6">
         <li><a href="index.html" class="hover:text-yellow-300">Home</a></li>
         <li><a href="diagnosis.html" class="hover:text-yellow-300">Diagnosis</a></li>
         <li><a href="research.html" class="hover:text-yellow-300">Research</a></li>
@@ -25,34 +35,59 @@
     </nav>
   </header>
 
-  <!-- Main Content -->
-  <main class="flex-grow container mx-auto p-8">
-    <section class="text-center">
-      <h1 class="text-4xl font-bold mb-4">Welcome to the RCPD Resource Center</h1>
-      <p class="text-lg mb-8">
-        Discover information about Retrograde Cricopharyngeal Dysfunction (RCPD), take our self-diagnosis, explore research articles and videos, and find specialized care.
-      </p>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="diagnosis.html" class="bg-green-600 text-white py-3 rounded hover:bg-green-700 transition">Start Diagnosis</a>
-        <a href="research.html" class="bg-green-600 text-white py-3 rounded hover:bg-green-700 transition">Explore Research</a>
-        <a href="find-a-doctor.html" class="bg-green-600 text-white py-3 rounded hover:bg-green-700 transition">Find a Doctor</a>
-      </div>
-    </section>
+  <script>
+    // Toggle the nav links on mobile
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinks = document.getElementById('nav-links');
+  
+    navToggle.addEventListener('click', () => {
+      // Toggle the 'hidden' class, which shows or hides the menu
+      navLinks.classList.toggle('hidden');
+    });
+  </script>
 
-    <!-- Community Section on the Home Page -->
-    <section class="container mx-auto p-8 bg-white rounded shadow-md mt-8">
-      <h2 class="text-2xl font-bold mb-4 text-center">Join the RCPD Community</h2>
-      <p class="text-gray-700 text-center mb-4">
-        Discover a supportive community on Reddit. Connect with others, share your experiences, and learn more about RCPD in a friendly, interactive environment.
-      </p>
-      <div class="flex justify-center">
-        <a href="https://www.reddit.com/r/noburp/" target="_blank" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition">
-          Visit r/noburp
-        </a>
-      </div>
-    </section>
-
-  </main>
+    <!-- Main Content -->
+    <main class="flex-grow">
+      <!-- Hero / Intro Section -->
+      <section class="mt-4">
+        <div class="max-w-4xl mx-auto p-8 text-center">
+          <h1 class="text-4xl font-bold mb-4">Welcome to the RCPD Resource Center</h1>
+          <p class="text-lg mb-6">
+            Your guide to understanding, diagnosing, and managing Retrograde Cricopharyngeal Dysfunction (No-Burp Syndrome). Explore resources, join the community, and take the next step toward relief.
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-lg justify-items-center">
+            <a href="diagnosis.html" class="bg-green-600 text-white py-3 px-6 rounded hover:bg-green-700 transition">Start Diagnosis</a>
+            <a href="research.html" class="bg-green-600 text-white py-3 px-6 rounded hover:bg-green-700 transition">Explore Research</a>
+            <a href="find-a-doctor.html" class="bg-green-600 text-white py-3 px-6 rounded hover:bg-green-700 transition">Find a Doctor</a>
+          </div>
+        </div>
+      </section>
+  
+      <!-- Additional Sections (What is RCPD? + Join the Community) -->
+      <section class="max-w-4xl mx-auto mt-8 p-4">
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- What is RCPD? -->
+          <div class="bg-white shadow-md rounded p-6">
+            <h2 class="text-2xl font-semibold mb-3 text-green-700">What is RCPD?</h2>
+            <p class="text-gray-700">
+              RCPD stands for Retrograde Cricopharyngeal Dysfunction. It's also known as the No-Burp Syndrome. It’s a condition where the cricopharyngeus muscle in the throat fails to relax properly, preventing a natural burp. This can result in chronic bloating, discomfort, and gurgling noises as trapped air cannot escape.
+            </p>
+          </div>
+          <!-- Join the Community -->
+          <div class="bg-white shadow-md rounded p-6">
+            <h2 class="text-2xl font-semibold mb-3 text-green-700">Join the RCPD Community</h2>
+            <p class="text-gray-700 mb-4">
+              Connect with others on <strong>r/noburp</strong>—a supportive Reddit community dedicated to RCPD. Ask questions, share experiences, and learn more in a friendly environment.
+            </p>
+            <div class="flex justify-center">
+              <a href="https://www.reddit.com/r/noburp/" target="_blank" class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition">
+                Visit r/noburp
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
   <!-- Disclaimer -->
   <div class="container mx-auto p-4 bg-white border rounded text-sm text-gray-600 mt-auto mb-4">
@@ -74,5 +109,8 @@
       </div>
     </div>
   </footer>
+
+  
+
 </body>
 </html>
