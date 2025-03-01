@@ -9,21 +9,46 @@
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100 text-gray-800">
   <!-- Header -->
-  <header class="bg-green-600 text-white p-2 shadow-md">
-    <nav class="container mx-auto flex justify-between items-center">
-      <!-- Logo Section -->
+  <header class="bg-green-600 text-white p-2 shadow-md relative">
+    <nav class="container mx-auto flex items-center justify-between relative">
+      <!-- Logo and Title -->
       <div class="flex items-center">
         <img src="images/noburp_logo_1.png" alt="RCPD Logo" class="h-12 mr-2">
         <span class="text-2xl font-bold">RCPD</span>
       </div>
-      <ul class="flex space-x-6">
-        <li><a href="index.html" class="hover:text-yellow-300">Home</a></li>
-        <li><a href="diagnosis.html" class="hover:text-yellow-300">Diagnosis</a></li>
-        <li><a href="research.html" class="hover:text-yellow-300">Research</a></li>
-        <li><a href="find-a-doctor.html" class="hover:text-yellow-300">Find a Doctor</a></li>
-      </ul>
+
+      <!-- Hamburger Icon (shown on small screens) -->
+      <button id="nav-toggle" class="block md:hidden focus:outline-none">
+        <!-- Simple Hamburger SVG Icon -->
+        <svg class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+        </svg>
+      </button>
+
+      <!-- Navigation Links (hidden on small screens by default) -->
+      <div id="nav-links-wrapper" class="bg-green-600 absolute top-full right-0 md:static md:w-auto md:flex hidden">
+        <ul id="nav-links" class="md:bg-transparent md:flex md:space-x-6 flex-col md:flex-row w-full md:w-auto">
+          <li><a href="index.html" class="hover:text-yellow-300 p-2">Home</a></li>
+          <li><a href="diagnosis.html" class="hover:text-yellow-300 p-2">Diagnosis</a></li>
+          <li><a href="research.html" class="hover:text-yellow-300 p-2">Research</a></li>
+          <li><a href="find-a-doctor.html" class="hover:text-yellow-300 p-2">Find a Doctor</a></li>
+        </ul>
+      </div>
     </nav>
   </header>
+
+  <script>
+    // Toggle the nav links on mobile
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinksWrapper = document.getElementById('nav-links-wrapper');
+
+    navToggle.addEventListener('click', () => {
+      // Toggle the 'hidden' class, which shows or hides the menu
+      navLinksWrapper.classList.toggle('hidden');
+      navLinksWrapper.classList.toggle('flex');
+      navLinksWrapper.classList.toggle('flex-col');
+    });
+  </script>
 
   <!-- Main Content -->
   <main class="flex-grow container mx-auto p-8 space-y-12">

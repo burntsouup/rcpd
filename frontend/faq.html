@@ -9,21 +9,46 @@
 </head>
 <body class="flex flex-col min-h-screen bg-gray-100 text-gray-800">
   <!-- Header -->
-  <header class="bg-green-600 text-white p-2 shadow-md">
-    <nav class="container mx-auto flex justify-between items-center">
-      <!-- Logo Section -->
+  <header class="bg-green-600 text-white p-2 shadow-md relative">
+    <nav class="container mx-auto flex items-center justify-between relative">
+      <!-- Logo and Title -->
       <div class="flex items-center">
         <img src="images/noburp_logo_1.png" alt="RCPD Logo" class="h-12 mr-2">
         <span class="text-2xl font-bold">RCPD</span>
       </div>
-      <ul class="flex space-x-6">
-        <li><a href="index.html" class="hover:text-yellow-300">Home</a></li>
-        <li><a href="diagnosis.html" class="hover:text-yellow-300">Diagnosis</a></li>
-        <li><a href="research.html" class="hover:text-yellow-300">Research</a></li>
-        <li><a href="find-a-doctor.html" class="hover:text-yellow-300">Find a Doctor</a></li>
-      </ul>
+
+      <!-- Hamburger Icon (shown on small screens) -->
+      <button id="nav-toggle" class="block md:hidden focus:outline-none">
+        <!-- Simple Hamburger SVG Icon -->
+        <svg class="w-6 h-6 fill-current text-white" viewBox="0 0 24 24">
+          <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/>
+        </svg>
+      </button>
+
+      <!-- Navigation Links (hidden on small screens by default) -->
+      <div id="nav-links-wrapper" class="bg-green-600 absolute top-full right-0 md:static md:w-auto md:flex hidden">
+        <ul id="nav-links" class="md:bg-transparent md:flex md:space-x-6 flex-col md:flex-row w-full md:w-auto">
+          <li><a href="index.html" class="hover:text-yellow-300 p-2">Home</a></li>
+          <li><a href="diagnosis.html" class="hover:text-yellow-300 p-2">Diagnosis</a></li>
+          <li><a href="research.html" class="hover:text-yellow-300 p-2">Research</a></li>
+          <li><a href="find-a-doctor.html" class="hover:text-yellow-300 p-2">Find a Doctor</a></li>
+        </ul>
+      </div>
     </nav>
   </header>
+
+  <script>
+    // Toggle the nav links on mobile
+    const navToggle = document.getElementById('nav-toggle');
+    const navLinksWrapper = document.getElementById('nav-links-wrapper');
+
+    navToggle.addEventListener('click', () => {
+      // Toggle the 'hidden' class, which shows or hides the menu
+      navLinksWrapper.classList.toggle('hidden');
+      navLinksWrapper.classList.toggle('flex');
+      navLinksWrapper.classList.toggle('flex-col');
+    });
+  </script>
 
   <!-- Main Content -->
   <main class="flex-grow container mx-auto p-8">
@@ -40,6 +65,13 @@
           </button>
           <div class="faq-answer mt-2 text-gray-600 hidden">
             <p>RCPD stands for Retrograde Cricopharyngeal Dysfunction. It’s a condition where the cricopharyngeus muscle in the throat fails to relax properly, preventing a natural burp. This can result in chronic bloating, discomfort, and gurgling noises as trapped air cannot escape.</p>
+            <div class="flex space-x-4 mt-4">
+              <img src="images/without_rcpd.png" alt="without RCPD" class="w-1/2">
+              <img src="images/with_rcpd.png" alt="with RCPD">
+            </div>
+            <p class="text-xs text-gray-600 ml-4 mt-2">
+              Note: Images illustrated by <a href="https://www.reddit.com/user/natalie_uic/" target="_blank" class="underline hover:text-green-600">natalie_uic (u/natalie_uic)</a>.
+            </p>
           </div>
         </div>
         <!-- FAQ Item 2 -->
@@ -56,6 +88,7 @@
               <li>Inability to burp or extreme difficulty burping</li>
               <li>Frequent gurgling, rumbling, or squeaking noises in the throat or upper chest</li>
               <li>Bloating, chest pressure, or discomfort after meals or carbonated drinks</li>
+              <li>Excessive flatulence</li>
               <li>Occasional relief through passing gas, air-vomiting, or lying down</li>
               <li>Social or dietary adjustments to avoid triggers like carbonated beverages</li>
             </ul>
@@ -84,10 +117,28 @@
           <div class="faq-answer mt-2 text-gray-600 hidden">
             <ul class="list-disc ml-6">
               <li><strong>Botox Injection:</strong> Helps relax the cricopharyngeus muscle so trapped air can escape.</li>
-              <li><strong>Physical/Swallow Therapy:</strong> Targeted exercises guided by a specialist.</li>
-              <li><strong>Surgery (Myotomy):</strong> A procedure to cut or weaken the muscle in severe cases.</li>
+              <li><strong>Physical/Swallow Therapy:</strong> Targeted exercises guided by a specialist. For example, <a href="https://www.youtube.com/watch?v=Pc3YOBxdXv4&ab_channel=VisitingNurseAssociationHealthGroup" target="_blank" class="text-blue-600 hover:underline">"shaker"</a> exercises.</li>
               <li><strong>Lifestyle & Diet Modifications:</strong> Adjusting food and drink habits to reduce gas production.</li>
             </ul>
+          </div>
+        </div>
+        <!-- FAQ Item 4.5 -->
+        <div class="faq-item border rounded shadow p-4 bg-white">
+          <button type="button" class="faq-question w-full text-left font-semibold flex justify-between items-center focus:outline-none" aria-expanded="false">
+            <span>What does the Botox injection do?</span>
+            <svg class="faq-icon w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer mt-2 text-gray-600 hidden">
+            <p>For RCPD, a Botox (botulinum toxin) injection is used to relax the cricopharyngeal muscle in the upper esophageal sphincter (UES). This muscle is normally supposed to relax to allow gas to escape from the stomach through burping, but in people with RCPD, it remains overly tight, preventing burping and leading to symptoms like bloating, discomfort, and gurgling noises as trapped air cannot escape.</p>
+            <div class="flex space-x-4 mt-4">
+              <img src="images/without_rcpd.png" alt="without RCPD" class="w-1/2">
+              <img src="images/with_rcpd.png" alt="with RCPD">
+            </div>
+            <p class="text-xs text-gray-600 ml-4 mt-2">
+              Note: Images illustrated by <a href="https://www.reddit.com/user/natalie_uic/" target="_blank" class="underline hover:text-green-600">natalie_uic (u/natalie_uic)</a>.
+            </p>
           </div>
         </div>
         <!-- FAQ Item 5 -->
@@ -102,7 +153,7 @@
             <p>If you suspect you have RCPD, consider taking the following steps:</p>
             <ul class="list-disc ml-6">
               <li>Document your symptoms including triggers and frequency.</li>
-              <li>Consult a specialist such as an ENT or gastroenterologist.</li>
+              <li>Consult a specialist such as an ENT (an otolaryngologist, also known as an Ear, Nose, and Throat doctor).</li>
               <li>Discuss treatment options, as early intervention may help manage symptoms.</li>
             </ul>
           </div>
@@ -110,13 +161,37 @@
         <!-- FAQ Item 6 -->
         <div class="faq-item border rounded shadow p-4 bg-white">
           <button type="button" class="faq-question w-full text-left font-semibold flex justify-between items-center focus:outline-none" aria-expanded="false">
-            <span>What is air-vomiting?</span>
+            <span>What is "air-vomiting"?</span>
             <svg class="faq-icon w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
           </button>
           <div class="faq-answer mt-2 text-gray-600 hidden">
             <p>Air-vomiting, sometimes called “air-puking,” is the forced expulsion of trapped air from the stomach or esophagus. It mimics vomiting without expelling any solid or liquid contents and is sometimes used by individuals with RCPD to relieve discomfort.</p>
+          </div>
+        </div>
+        <!-- FAQ Item 7 -->
+        <div class="faq-item border rounded shadow p-4 bg-white">
+          <button type="button" class="faq-question w-full text-left font-semibold flex justify-between items-center focus:outline-none" aria-expanded="false">
+            <span>What is Emetophobia?</span>
+            <svg class="faq-icon w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer mt-2 text-gray-600 hidden">
+            <p>Emetophobia is an intense fear of vomiting, seeing vomit, or feeling nauseous. It can cause anxiety, avoidance behaviors, and impact daily life. RCPD can trigger or worsen emetophobia since the trapped gas can cause sensations similar to nausea, increasing anxiety about vomiting.</p>
+          </div>
+        </div>
+        <!-- FAQ Item 8 -->
+        <div class="faq-item border rounded shadow p-4 bg-white">
+          <button type="button" class="faq-question w-full text-left font-semibold flex justify-between items-center focus:outline-none" aria-expanded="false">
+            <span>What is ENT doctor?</span>
+            <svg class="faq-icon w-5 h-5 transform transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="faq-answer mt-2 text-gray-600 hidden">
+            <p>An ENT (Ear, Nose, and Throat) doctor, also known as an otolaryngologist, is a medical specialist who diagnoses and treats conditions related to the ears, nose, throat, and related structures of the head and neck. A laryngologist, a specialized ENT focused on swallowing disorders, is the primary specialist for treating RCPD.</p>
           </div>
         </div>
       </div>
