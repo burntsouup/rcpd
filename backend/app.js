@@ -58,13 +58,13 @@ app.get('/api/doctors', async (req, res) => {
       // Query the database for doctors matching the search
       const query = `
         SELECT * FROM Doctors
-        WHERE name LIKE @search 
-          OR Specialty LIKE @search 
+        WHERE Name LIKE @search
           OR Clinic_Name LIKE @search 
           OR City LIKE @search 
           OR State_Province LIKE @search 
           OR Country LIKE @search 
           OR Postal_Zip_Code LIKE @search
+          OR Additional_Search_Keywords LIKE @search
       `;
       const result = await pool.request()
         .input('search', sql.VarChar, `%${search}%`)
