@@ -46,15 +46,18 @@ document.addEventListener('DOMContentLoaded', () => {
           doctorListElem.innerHTML = '<p>No doctors found for this location.</p>';
         } else {
           doctors.forEach((doctor) => {
-            const doctorItem = document.createElement('li');
-            doctorItem.classList.add('mb-4');
-            doctorItem.innerHTML = `
+            const card = document.createElement('div');
+            card.classList.add('doctor-card', 'bg-white', 'shadow-md', 'rounded', 'p-4', 'transform', 'transition', 'hover:scale-105');
+
+            // Build the inner HTML of the card
+            card.innerHTML = `
               <h3 class="text-lg font-semibold text-gray-800">${doctor.Name}</h3>
-              <p class="text-gray-600">${doctor.Specialty}, ${doctor.City}, ${doctor.State_Province}, ${doctor.Country}</p>
-              <p class="text-gray-600">Clinic: ${doctor.Clinic_Name}</p>
+              <p class="text-gray-600">Specialty: ${doctor.Specialty}</p>
+              <p class="text-gray-600">${doctor.City}, ${doctor.State_Province}, ${doctor.Country}</p>
               <p class="text-gray-600">Website: <a href="${doctor.Website}" class="text-green-500 underline" target="_blank">${doctor.Website}</a></p>
             `;
-            doctorListElem.appendChild(doctorItem);
+            // Append the card to the container div
+            doctorListElem.appendChild(card);
           });
         }
         
@@ -65,4 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
         alert('There was an error fetching doctor information. Please try again later.');
       }
     });
+
+    document.getElementById('search').addEventListener('keydown', function (event) {
+      if (event.key === "Enter") {
+        // Prevent the default form submission behavior
+        event.preventDefault();
+        // Trigger the search button's click event
+        document.getElementById('search-button').click();
+      }
+    });
+    
   });
