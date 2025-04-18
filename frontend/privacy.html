@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <!-- Tailwind CSS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <title>Diagnosis - RCPD Self-Diagnosis Tool</title>
+  <title>Privacy</title>
   <!-- Azure Application Insights -->
   <script type="text/javascript">
     !(function (cfg){function e(){cfg.onInit&&cfg.onInit(n)}var x,w,D,t,E,n,C=window,O=document,b=C.location,q="script",I="ingestionendpoint",L="disableExceptionTracking",j="ai.device.";"instrumentationKey"[x="toLowerCase"](),w="crossOrigin",D="POST",t="appInsightsSDK",E=cfg.name||"appInsights",(cfg.name||C[t])&&(C[t]=E),n=C[E]||function(g){var f=!1,m=!1,h={initialize:!0,queue:[],sv:"8",version:2,config:g};function v(e,t){var n={},i="Browser";function a(e){e=""+e;return 1===e.length?"0"+e:e}return n[j+"id"]=i[x](),n[j+"type"]=i,n["ai.operation.name"]=b&&b.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(h.sv||h.version),{time:(i=new Date).getUTCFullYear()+"-"+a(1+i.getUTCMonth())+"-"+a(i.getUTCDate())+"T"+a(i.getUTCHours())+":"+a(i.getUTCMinutes())+":"+a(i.getUTCSeconds())+"."+(i.getUTCMilliseconds()/1e3).toFixed(3).slice(2,5)+"Z",iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}},ver:undefined,seq:"1",aiDataContract:undefined}}var n,i,t,a,y=-1,T=0,S=["js.monitor.azure.com","js.cdn.applicationinsights.io","js.cdn.monitor.azure.com","js0.cdn.applicationinsights.io","js0.cdn.monitor.azure.com","js2.cdn.applicationinsights.io","js2.cdn.monitor.azure.com","az416426.vo.msecnd.net"],o=g.url||cfg.src,r=function(){return s(o,null)};function s(d,t){if((n=navigator)&&(~(n=(n.userAgent||"").toLowerCase()).indexOf("msie")||~n.indexOf("trident/"))&&~d.indexOf("ai.3")&&(d=d.replace(/(\/)(ai\.3\.)([^\d]*)$/,function(e,t,n){return t+"ai.2"+n})),!1!==cfg.cr)for(var e=0;e<S.length;e++)if(0<d.indexOf(S[e])){y=e;break}var n,i=function(e){var a,t,n,i,o,r,s,c,u,l;h.queue=[],m||(0<=y&&T+1<S.length?(a=(y+T+1)%S.length,p(d.replace(/^(.*\/\/)([\w\.]*)(\/.*)$/,function(e,t,n,i){return t+S[a]+i})),T+=1):(f=m=!0,s=d,!0!==cfg.dle&&(c=(t=function(){var e,t={},n=g.connectionString;if(n)for(var i=n.split(";"),a=0;a<i.length;a++){var o=i[a].split("=");2===o.length&&(t[o[0][x]()]=o[1])}return t[I]||(e=(n=t.endpointsuffix)?t.location:null,t[I]="https://"+(e?e+".":"")+"dc."+(n||"services.visualstudio.com")),t}()).instrumentationkey||g.instrumentationKey||"",t=(t=(t=t[I])&&"/"===t.slice(-1)?t.slice(0,-1):t)?t+"/v2/track":g.endpointUrl,t=g.userOverrideEndpointUrl||t,(n=[]).push((i="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",o=s,u=t,(l=(r=v(c,"Exception")).data).baseType="ExceptionData",l.baseData.exceptions=[{typeName:"SDKLoadFailed",message:i.replace(/\./g,"-"),hasFullStack:!1,stack:i+"\nSnippet failed to load ["+o+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(b&&b.pathname||"_unknown_")+"\nEndpoint: "+u,parsedStack:[]}],r)),n.push((l=s,i=t,(u=(o=v(c,"Message")).data).baseType="MessageData",(r=u.baseData).message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+l+")").replace(/\"/g,"")+'"',r.properties={endpoint:i},o)),s=n,c=t,JSON&&((u=C.fetch)&&!cfg.useXhr?u(c,{method:D,body:JSON.stringify(s),mode:"cors"}):XMLHttpRequest&&((l=new XMLHttpRequest).open(D,c),l.setRequestHeader("Content-type","application/json"),l.send(JSON.stringify(s)))))))},a=function(e,t){m||setTimeout(function(){!t&&h.core||i()},500),f=!1},p=function(e){var n=O.createElement(q),e=(n.src=e,t&&(n.integrity=t),n.setAttribute("data-ai-name",E),cfg[w]);return!e&&""!==e||"undefined"==n[w]||(n[w]=e),n.onload=a,n.onerror=i,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||a(0,t)},cfg.ld&&cfg.ld<0?O.getElementsByTagName("head")[0].appendChild(n):setTimeout(function(){O.getElementsByTagName(q)[0].parentNode.appendChild(n)},cfg.ld||0),n};p(d)}cfg.sri&&(n=o.match(/^((http[s]?:\/\/.*\/)\w+(\.\d+){1,5})\.(([\w]+\.){0,2}js)$/))&&6===n.length?(d="".concat(n[1],".integrity.json"),i="@".concat(n[4]),l=window.fetch,t=function(e){if(!e.ext||!e.ext[i]||!e.ext[i].file)throw Error("Error Loading JSON response");var t=e.ext[i].integrity||null;s(o=n[2]+e.ext[i].file,t)},l&&!cfg.useXhr?l(d,{method:"GET",mode:"cors"}).then(function(e){return e.json()["catch"](function(){return{}})}).then(t)["catch"](r):XMLHttpRequest&&((a=new XMLHttpRequest).open("GET",d),a.onreadystatechange=function(){if(a.readyState===XMLHttpRequest.DONE)if(200===a.status)try{t(JSON.parse(a.responseText))}catch(e){r()}else r()},a.send())):o&&r();try{h.cookie=O.cookie}catch(k){}function e(e){for(;e.length;)!function(t){h[t]=function(){var e=arguments;f||h.queue.push(function(){h[t].apply(h,e)})}}(e.pop())}var c,u,l="track",d="TrackPage",p="TrackEvent",l=(e([l+"Event",l+"PageView",l+"Exception",l+"Trace",l+"DependencyData",l+"Metric",l+"PageViewPerformance","start"+d,"stop"+d,"start"+p,"stop"+p,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),h.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},(g.extensionConfig||{}).ApplicationInsightsAnalytics||{});return!0!==g[L]&&!0!==l[L]&&(e(["_"+(c="onerror")]),u=C[c],C[c]=function(e,t,n,i,a){var o=u&&u(e,t,n,i,a);return!0!==o&&h["_"+c]({message:e,url:t,lineNumber:n,columnNumber:i,error:a,evt:C.event}),o},g.autoExceptionInstrumented=!0),h}(cfg.cfg),(C[E]=n).queue&&0===n.queue.length?(n.queue.push(e),n.trackPageView({})):e();})({
@@ -65,129 +65,70 @@
     });
   </script>
 
-  <!-- Main Content -->
-  <main class="flex-grow container mx-auto p-6">
-    <!-- Start Screen -->
-    <div id="start-screen" class="flex flex-col items-center justify-center space-y-4">
-      <h2 class="text-2xl font-bold">Welcome to the RCPD Self-Diagnosis Tool</h2>
-      <p class="text-lg">Click "Start" to begin the questionnaire.</p>
-      <p class="text-xs text-gray-600">
-        Note: This self-diagnosis tool is for informational purposes only and is not a substitute for professional medical advice.
-      </p>
-      <button id="start-quiz" class="bg-green-600 text-white py-2 px-4 rounded">Start</button>
-    </div>
-
-    <!-- Progress Indicator (initially hidden) -->
-    <div id="progress-section" class="mb-6 hidden">
-      <div id="progress-container" class="w-full bg-gray-300 rounded-full h-4 mb-2">
-        <div id="progress-bar" class="bg-green-600 h-4 rounded-full" style="width: 0%;"></div>
-      </div>
-      <p id="progress-text" class="text-center text-sm font-medium">Step 1 of 5</p>
-    </div>
-
-    <!-- Quiz Container (initially hidden) -->
-    <div id="quiz-container" class="hidden">
-      <!-- Step 1: Question 1 -->
-      <div class="quiz-step" id="step-1">
-        <p class="mb-4">
-          1. Have you noticed that you are physically unable to burp, even when you feel the urge or attempt intentional methods (e.g., drinking carbonated beverages or “swallowing” air)?
-        </p>
-        <select id="q1" class="p-2 border rounded">
-          <option value="0">Never</option>
-          <option value="1">Rarely</option>
-          <option value="2">Sometimes</option>
-          <option value="3">Often</option>
-          <option value="4">Always</option>
-        </select>
-        <div class="flex justify-start space-x-4 mt-4">
-          <button class="next-button bg-green-600 text-white py-2 px-4 rounded">Next</button>
-        </div>
-      </div>
-
-      <!-- Step 2: Question 2 -->
-      <div class="quiz-step hidden" id="step-2">
-        <p class="mb-4">
-          2. Do you frequently experience gurgling, rumbling, or squeaking noises in your throat or upper chest after meals or consuming carbonated drinks?
-        </p>
-        <select id="q2" class="p-2 border rounded">
-          <option value="0">Never</option>
-          <option value="1">Rarely</option>
-          <option value="2">Sometimes</option>
-          <option value="3">Often</option>
-          <option value="4">Always</option>
-        </select>
-        <div class="flex justify-start space-x-4 mt-4">
-          <button class="prev-button bg-gray-400 text-white py-2 px-4 rounded">Previous</button>
-          <button class="next-button bg-green-600 text-white py-2 px-4 rounded">Next</button>
-        </div>
-      </div>
-
-      <!-- Step 3: Question 3 -->
-      <div class="quiz-step hidden" id="step-3">
-        <p class="mb-4">
-          3. Do you often feel bloating, pressure, or discomfort in your upper abdomen or chest after eating or drinking carbonated beverages, possibly due to trapped gas?
-        </p>
-        <select id="q3" class="p-2 border rounded">
-          <option value="0">Never</option>
-          <option value="1">Rarely</option>
-          <option value="2">Sometimes</option>
-          <option value="3">Often</option>
-          <option value="4">Always</option>
-        </select>
-        <div class="flex justify-start space-x-4 mt-4">
-          <button class="prev-button bg-gray-400 text-white py-2 px-4 rounded">Previous</button>
-          <button class="next-button bg-green-600 text-white py-2 px-4 rounded">Next</button>
-        </div>
-      </div>
-
-      <!-- Step 4: Question 4 -->
-      <div class="quiz-step hidden" id="step-4">
-        <p class="mb-4">
-          4. Do you find alternative ways to relieve trapped gas, such as frequently passing gas, or inducing a belch through extreme measures (e.g., gagging, also known as “air vomiting”), or lying down, rather than naturally burping?
-        </p>
-        <select id="q4" class="p-2 border rounded">
-          <option value="0">Never</option>
-          <option value="1">Rarely</option>
-          <option value="2">Sometimes</option>
-          <option value="3">Often</option>
-          <option value="4">Always</option>
-        </select>
-        <div class="flex justify-start space-x-4 mt-4">
-          <button class="prev-button bg-gray-400 text-white py-2 px-4 rounded">Previous</button>
-          <button class="next-button bg-green-600 text-white py-2 px-4 rounded">Next</button>
-        </div>
-      </div>
-
-      <!-- Step 5: Question 5 -->
-      <div class="quiz-step hidden" id="step-5">
-        <p class="mb-4">
-          5. Does your inability to burp affect your quality of life, such as avoiding social events with carbonated drinks (e.g., beer), modifying your diet, or experiencing anxiety due to discomfort?
-        </p>
-        <select id="q5" class="p-2 border rounded">
-          <option value="0">Never</option>
-          <option value="1">Rarely</option>
-          <option value="2">Sometimes</option>
-          <option value="3">Often</option>
-          <option value="4">Always</option>
-        </select>
-        <div class="flex justify-start space-x-4 mt-4">
-          <button class="prev-button bg-gray-400 text-white py-2 px-4 rounded">Previous</button>
-          <button id="submit-quiz" class="bg-green-600 text-white py-2 px-4 rounded">Submit</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Results Section -->
-    <div id="results" class="hidden mt-8 p-4 border rounded bg-white">
-      <h2 class="text-2xl font-bold mb-2">Your Results</h2>
-      <p id="result-text"></p>
-      <p class="text-xs text-gray-600 mt-4">
-        Note: This self-diagnosis tool is for informational purposes only and is not a substitute for professional medical advice.
-      </p>
-      <a href="find-a-doctor.html" class="mt-2 inline-block bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">Find a Doctor</a>
-    </div>
-
-  </main>
+    <!-- Main Content -->
+    <main class="flex-grow container mx-auto p-8">
+        <section>
+          <h1 class="text-3xl font-bold mb-4">Privacy</h1>
+          <p class="text-lg mb-4">
+            Effective Date: April 19, 2025
+          </p>
+          <p class="mb-4">
+            This Privacy Policy explains how the RCPD Resource Center (“we”, “our”, or “us”) collects, uses, and protects your information when you visit this Site.
+          </p>
+    
+          <h2 class="text-xl font-semibold mt-6 mb-2">1. Information We Collect</h2>
+          <p class="mb-2">
+            We may collect basic information when you interact with the Site, including:
+          </p>
+          <ul class="list-disc list-inside mb-4 ml-4">
+            <li>Anonymous usage data (e.g., browser type, device type, pages visited)</li>
+            <li>Location data (e.g., to understand and improve performance)</li>
+            <li>Voluntarily submitted data (e.g., feedback forms)</li>
+          </ul>
+          <p class="mb-4">
+            We do not collect:
+          </p>
+          <ul class="list-disc list-inside mb-4 ml-4">
+            <li>Personal health information (PHI)</li>
+            <li>Account credentials or personally identifiable information (PII) unless explicitly provided by you</li>
+          </ul>
+    
+          <h2 class="text-xl font-semibold mt-6 mb-2">2. Use of Information</h2>
+          <p class="mb-2">
+            We use this data to:
+          </p>
+          <ul class="list-disc list-inside mb-4 ml-4">
+            <li>Improve the Site’s content and usability</li>
+            <li>Understand visitor interactions</li>
+            <li>Offer relevant features such as doctor searches based on general location</li>
+          </ul>
+    
+          <h2 class="text-xl font-semibold mt-6 mb-2">3. Cookies and Analytics</h2>
+          <p class="mb-4">
+            This Site may use cookies or similar technologies for analytics purposes (e.g., Google Analytics or Application Insights). These do not identify individuals directly.
+          </p>
+    
+          <h2 class="text-xl font-semibold mt-6 mb-2">4. Third-Party Services</h2>
+          <p class="mb-4">
+            If you use a feature to search for doctors, this may involve integration with third-party services or APIs (e.g., Azure SQL Database). We are not responsible for their data practices, so please review their respective policies.
+          </p>
+    
+          <h2 class="text-xl font-semibold mt-6 mb-2">5. Data Security</h2>
+          <p class="mb-4">
+            We implement standard measures to secure our systems and data. However, no system can be guaranteed 100% secure.
+          </p>
+    
+          <h2 class="text-xl font-semibold mt-6 mb-2">6. Your Rights</h2>
+          <p class="mb-4">
+            Depending on your region, you may have rights to request access, correction, or deletion of any personal data we may hold (if applicable). Contact us at czernuka@outlook.com for any such request.
+          </p>
+    
+          <h2 class="text-xl font-semibold mt-6 mb-2">7. Changes to This Policy</h2>
+          <p class="mb-4">
+            We may update this policy as needed. Updates will be reflected by the “Effective Date” above.
+          </p>
+        </section>
+      </main>
 
   <!-- Disclaimer -->
   <div class="container mx-auto p-4 bg-white border rounded text-sm text-gray-600 mt-auto mb-4">
@@ -199,8 +140,8 @@
     <div class="container mx-auto">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0">
-          <a href="tos.html" class="text-sm hover:text-green-400 mr-4">Terms of Service</a>
-          <a href="privacy.html" class="text-sm hover:text-green-400">Privacy</a>
+            <a href="tos.html" class="text-sm hover:text-green-400 mr-4">Terms of Service</a>
+            <a href="privacy.html" class="text-sm hover:text-green-400">Privacy</a>
         </div>
         <div class="flex space-x-4">
           <a href="about.html" class="text-sm hover:text-green-400">About</a>
@@ -211,88 +152,7 @@
     </div>
   </footer>
 
-  <script>
-    // JavaScript for multi-step quiz functionality with progress indicator and start screen
-    const steps = document.querySelectorAll('.quiz-step');
-    let currentStep = 0;
-
-    // Function to update progress bar and text
-    function updateProgress() {
-      const totalSteps = steps.length;
-      const percentage = ((currentStep + 1) / totalSteps) * 100;
-      document.getElementById('progress-bar').style.width = percentage + '%';
-      document.getElementById('progress-text').innerText = `Step ${currentStep + 1} of ${totalSteps}`;
-    }
-
-    // Function to show the current step and hide others
-    function showStep(stepIndex) {
-      steps.forEach((step, index) => {
-        step.classList.toggle('hidden', index !== stepIndex);
-      });
-      updateProgress();
-    }
-
-    // Hide quiz container and progress section initially; only start screen is visible
-    document.getElementById('quiz-container').classList.add('hidden');
-    document.getElementById('progress-section').classList.add('hidden');
-
-    // Start button event listener
-    document.getElementById('start-quiz').addEventListener('click', () => {
-      // Hide start screen
-      document.getElementById('start-screen').classList.add('hidden');
-      // Show progress indicator and quiz container
-      document.getElementById('progress-section').classList.remove('hidden');
-      document.getElementById('quiz-container').classList.remove('hidden');
-      // Initialize the quiz
-      currentStep = 0;
-      showStep(currentStep);
-    });
-
-    // Add event listeners for Next buttons
-    document.querySelectorAll('.next-button').forEach(button => {
-      button.addEventListener('click', () => {
-        if (currentStep < steps.length - 1) {
-          currentStep++;
-          showStep(currentStep);
-        }
-      });
-    });
-
-    // Add event listeners for Previous buttons
-    document.querySelectorAll('.prev-button').forEach(button => {
-      button.addEventListener('click', () => {
-        if (currentStep > 0) {
-          currentStep--;
-          showStep(currentStep);
-        }
-      });
-    });
-
-    // Submit quiz: collect responses and calculate total score
-    document.getElementById('submit-quiz').addEventListener('click', () => {
-      const q1 = parseInt(document.getElementById('q1').value, 10);
-      const q2 = parseInt(document.getElementById('q2').value, 10);
-      const q3 = parseInt(document.getElementById('q3').value, 10);
-      const q4 = parseInt(document.getElementById('q4').value, 10);
-      const q5 = parseInt(document.getElementById('q5').value, 10);
-      
-      const totalScore = q1 + q2 + q3 + q4 + q5;
-      let resultMessage = '';
-      
-      // Adjust thresholds based on a maximum score of 20
-      if (totalScore >= 15) {
-        resultMessage = 'Your responses indicate strong symptoms of RCPD. It may be wise to consult a healthcare professional for a comprehensive evaluation.';
-      } else if (totalScore >= 8) {
-        resultMessage = 'Your responses suggest moderate symptoms of RCPD. You might consider monitoring your condition and consulting a healthcare provider if your symptoms worsen.';
-      } else {
-        resultMessage = 'Based on your responses, it seems unlikely that you have severe symptoms of RCPD. However, if you have concerns, please consult a healthcare professional.';
-      }
-      
-      document.getElementById('result-text').innerText = resultMessage;
-      document.getElementById('results').classList.remove('hidden');
-      document.getElementById('quiz-container').classList.add('hidden');
-      document.getElementById('progress-section').classList.add('hidden');
-    });
-  </script>
+  <!-- Your existing script -->
+  <script src="script.js"></script>
 </body>
 </html>
