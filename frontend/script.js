@@ -66,6 +66,15 @@ document.addEventListener('DOMContentLoaded', () => {
       } catch (error) {
         console.error('Error retrieving doctor data:', error);
         alert('There was an error fetching doctor information. Please try again later.');
+        response.status(500).json({
+          ok: false,
+          message: error.message,
+          code: error.code,
+          number: error.number || error?.originalError?.info?.number,
+          state: error?.originalError?.info?.state,
+          class: error?.originalError?.info?.class,
+          serverName: error?.originalError?.info?.serverName
+        });
       }
     });
 
