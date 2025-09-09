@@ -9,7 +9,7 @@ app.use(express.static('frontend'));
 
 const tenantId = '0c79a9aa-feb7-4296-911f-1db2fdf1afc8';
 const clientId = '4bf9358f-f159-4db4-85a0-95377c397218';
-const clientSecret = 'mzh8Q~HyGF3JSi4a94rmuP3k7aS50SKuE~DlmaTb';
+const clientSecret = 'a-Y8Q~NUPgqFk15TSzIac1z71EtfvYggJuBVrau1';
 const sqlServer = 'dbserver-rcpd-canadacentral-001.database.windows.net'; // e.g., myserver.database.windows.net
 const database = 'db-rcpd-canadacentral-001';
 
