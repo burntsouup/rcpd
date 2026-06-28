@@ -10,3 +10,6 @@ npm-debug.log*
 
 # OS / editor cruft
 .DS_Store
+
+# Local-only source material (not published)
+/data/*.kml
