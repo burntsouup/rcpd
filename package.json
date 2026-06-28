@@ -1,18 +1,16 @@
 {
-  "name": "rcpd",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "noburp-info",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Educational resource for Retrograde Cricopharyngeal Dysfunction (RCPD / No-Burp Syndrome).",
+  "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@azure/data-tables": "^13.3.0",
-    "@azure/identity": "^4.6.0",
-    "express": "^4.21.2",
-    "mssql": "^11.0.1"
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0",
+    "csv-parse": "^5.5.6"
   }
 }

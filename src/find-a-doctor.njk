@@ -1,0 +1,65 @@
+---
+layout: base.njk
+permalink: /find-a-doctor.html
+title: Find a doctor
+description: "A community-built directory of doctors who diagnose and treat RCPD (no-burp syndrome). Search by name, city, state, or country."
+scripts:
+  - /assets/js/doctors.js
+---
+
+<section class="page-head section section--tight">
+  <div class="wrap">
+    <p class="eyebrow">Directory</p>
+    <h1>Find a doctor</h1>
+    <p class="lead">
+      A directory of clinicians who diagnose and treat RCPD, compiled by the community. Search
+      by name, clinic, city, state, or country to find someone near you.
+    </p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="finder__controls">
+      <label class="visually-hidden" for="doctor-search">Search the directory</label>
+      <input
+        class="finder__search"
+        type="search"
+        id="doctor-search"
+        name="doctor-search"
+        placeholder="Search by name, city, state, or country&hellip;"
+        autocomplete="off"
+        spellcheck="false">
+      <p class="finder__count" id="doctor-count" data-total="{{ doctors.length }}">
+        {{ doctors.length }} doctors listed
+      </p>
+    </div>
+
+    <p id="finder-empty" class="callout callout--note" hidden>
+      No doctors match your search. Try a broader term &mdash; a state, province, or country.
+    </p>
+
+    <div class="doctor-grid" id="doctor-grid">
+      {%- for doc in doctors %}
+      <article class="doctor" data-search="{{ doc.search }}">
+        <h2 class="doctor__name">{{ doc.name }}</h2>
+        {% if doc.specialty %}<p class="doctor__specialty">{{ doc.specialty }}</p>{% endif %}
+        {% if doc.clinic %}<p class="doctor__clinic">{{ doc.clinic }}</p>{% endif %}
+        {% if doc.location %}<p class="doctor__location">{{ doc.location }}</p>{% endif %}
+        {% if doc.phone or doc.website %}
+        <div class="doctor__contact">
+          {% if doc.phone %}<a href="{{ doc.phone | telHref }}">{{ doc.phone }}</a>{% endif %}
+          {% if doc.website %}<a href="{{ doc.website }}" target="_blank" rel="noopener">Visit website</a>{% endif %}
+        </div>
+        {% endif %}
+      </article>
+      {%- endfor %}
+    </div>
+
+    <p class="figure-note" style="margin-top:2rem">
+      This list is community-maintained and may be incomplete or out of date &mdash; always confirm
+      a clinician treats RCPD before booking. Know a doctor who should be here? Share them with the
+      <a href="{{ site.reddit }}" target="_blank" rel="noopener">r/noburp</a> community.
+    </p>
+  </div>
+</section>

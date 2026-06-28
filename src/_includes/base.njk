@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  {%- set pageTitle = title + " · " + site.shortTitle if title else site.title -%}
+  {%- set metaDescription = description if description else site.description -%}
+  {%- set canonical = site.url + page.url -%}
+  <title>{{ pageTitle }}</title>
+  <meta name="description" content="{{ metaDescription }}">
+  <link rel="canonical" href="{{ canonical }}">
+  <meta name="color-scheme" content="light">
+  <meta name="theme-color" content="{{ site.themeColor }}">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Security: with GitHub Pages we can't set HTTP security headers, so the
+       Content-Security-Policy is delivered via meta. Scripts are same-origin
+       only; there are no inline scripts or inline event handlers anywhere.
+       (frame-ancestors is header-only and ignored in meta, so it's omitted.) -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; img-src 'self' data:; font-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self'; form-action 'none'; object-src 'none'; upgrade-insecure-requests">
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ title if title else site.title }}">
+  <meta property="og:description" content="{{ metaDescription }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ site.url }}/assets/img/og-image.png">
+  <meta property="og:locale" content="{{ site.locale }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title if title else site.title }}">
+  <meta name="twitter:description" content="{{ metaDescription }}">
+  <meta name="twitter:image" content="{{ site.url }}/assets/img/og-image.png">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon-192.png">
+  <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+  <!-- Fonts: self-hosted, no third-party requests -->
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/atkinson-400.woff2" crossorigin>
+  <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/fraunces.woff2" crossorigin>
+
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="/">
+        <img class="brand__mark" src="/assets/img/logo.png" width="40" height="40" alt="">
+        <span class="brand__text">
+          <span class="brand__name">No&nbsp;Burp</span>
+          <span class="brand__sub">RCPD resources</span>
+        </span>
+      </a>
+
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="nav-toggle__box" aria-hidden="true">
+          <span class="nav-toggle__bar"></span>
+        </span>
+        <span class="visually-hidden">Menu</span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Primary">
+        <ul>
+          {%- for item in site.nav %}
+          <li>
+            <a href="{{ item.url }}"{% if item.url == page.url %} aria-current="page"{% endif %}>{{ item.text }}</a>
+          </li>
+          {%- endfor %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    {{ content | safe }}
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer__grid">
+      <div class="site-footer__brand">
+        <span class="brand__name">No Burp</span>
+        <p>A free, independent resource to help people recognize RCPD and find their way to treatment.</p>
+        <a class="reddit-link" href="{{ site.reddit }}" target="_blank" rel="noopener">Community: r/noburp &rarr;</a>
+      </div>
+
+      <nav class="site-footer__nav" aria-label="Footer">
+        <h2>Site</h2>
+        <ul>
+          <li><a href="/about.html">About</a></li>
+          <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="/find-a-doctor.html">Find a doctor</a></li>
+        </ul>
+      </nav>
+
+      <nav class="site-footer__nav" aria-label="Legal">
+        <h2>Legal</h2>
+        <ul>
+          <li><a href="/privacy.html">Privacy</a></li>
+          <li><a href="/tos.html">Terms of Service</a></li>
+        </ul>
+      </nav>
+    </div>
+
+    <div class="wrap">
+      <p class="site-footer__disclaimer">
+        <strong>Medical disclaimer.</strong> This website is for general education only and is not medical
+        advice, diagnosis, or treatment. Always consult a qualified healthcare professional about your health.
+      </p>
+      <p class="site-footer__legal">
+        &copy; {% year %} No Burp &middot; noburp.info &middot; Illustrations by
+        <a href="https://www.reddit.com/user/natalie_uic/" target="_blank" rel="noopener">u/natalie_uic</a>
+        &middot; Doctor directory compiled by
+        <a href="https://www.reddit.com/user/karybrie/" target="_blank" rel="noopener">u/karybrie</a>.
+      </p>
+    </div>
+  </footer>
+
+  <script src="/assets/js/nav.js" defer></script>
+  {%- if scripts %}
+  {%- for s in scripts %}
+  <script src="{{ s }}" defer></script>
+  {%- endfor %}
+  {%- endif %}
+</body>
+</html>
