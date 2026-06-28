@@ -7,8 +7,10 @@
   {%- set pageTitle = title + " · " + site.shortTitle if title else site.title -%}
   {%- set metaDescription = description if description else site.description -%}
   {%- set canonical = site.url + page.url -%}
+  {%- set isLegal = page.url == "/tos.html" or page.url == "/privacy.html" or page.url == "/404.html" -%}
   <title>{{ pageTitle }}</title>
   <meta name="description" content="{{ metaDescription }}">
+  <meta name="author" content="{{ site.author }}">
   <link rel="canonical" href="{{ canonical }}">
   <meta name="color-scheme" content="light">
   <meta name="theme-color" content="{{ site.themeColor }}">
@@ -37,6 +39,47 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicon-192.png">
   <link rel="apple-touch-icon" href="/assets/img/apple-touch-icon.png">
+
+  <!-- Structured data (schema.org JSON-LD) for search engines and AI assistants -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "{{ site.url }}/#organization",
+        "name": {{ site.name | dump | safe }},
+        "url": "{{ site.url }}/",
+        "logo": "{{ site.url }}/assets/img/favicon-192.png",
+        "description": {{ site.description | dump | safe }},
+        "founder": { "@type": "Person", "name": {{ site.author | dump | safe }} },
+        "sameAs": [{{ site.reddit | dump | safe }}]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "{{ site.url }}/#website",
+        "url": "{{ site.url }}/",
+        "name": {{ site.name | dump | safe }},
+        "description": {{ site.description | dump | safe }},
+        "inLanguage": "{{ site.lang }}",
+        "publisher": { "@id": "{{ site.url }}/#organization" }
+      },
+      {
+        "@type": "{% if isLegal %}WebPage{% else %}MedicalWebPage{% endif %}",
+        "@id": "{{ canonical }}#webpage",
+        "url": "{{ canonical }}",
+        "name": {{ pageTitle | dump | safe }},
+        "description": {{ metaDescription | dump | safe }},
+        "inLanguage": "{{ site.lang }}",
+        "isPartOf": { "@id": "{{ site.url }}/#website" },
+        "publisher": { "@id": "{{ site.url }}/#organization" },
+        "dateModified": "{% isoDate %}"{% if not isLegal %},
+        "about": { "@id": "{{ site.url }}/#rcpd" },
+        "lastReviewed": "{% isoDate %}"{% endif %}
+      }
+    ]
+  }
+  </script>
 
   <!-- Fonts: self-hosted, no third-party requests -->
   <link rel="preload" as="font" type="font/woff2" href="/assets/fonts/atkinson-400.woff2" crossorigin>

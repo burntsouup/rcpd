@@ -1,0 +1,36 @@
+# No Burp — RCPD (Retrograde Cricopharyngeal Dysfunction) resource
+
+> No Burp (noburp.info) is a free, independent educational resource about Retrograde
+> Cricopharyngeal Dysfunction (RCPD), also known as "no-burp syndrome" — a condition in which the
+> cricopharyngeus muscle fails to relax, leaving a person unable to burp. The site explains the
+> condition, its symptoms, and treatment (most commonly Botox), offers a private in-browser symptom
+> self-check, and maintains a community-compiled directory of clinicians who treat RCPD. It is an
+> educational resource only and is not medical advice.
+
+## Key facts about RCPD
+
+- RCPD = Retrograde Cricopharyngeal Dysfunction; also called R-CPD or "no-burp syndrome".
+- Hallmark symptom: a lifelong inability to belch or burp.
+- Common symptoms: gurgling or rumbling throat and chest noises, bloating and chest/abdominal
+  pressure, excessive flatulence, and sometimes difficulty vomiting.
+- Cause: the cricopharyngeus muscle (the upper esophageal sphincter) does not relax to vent
+  swallowed air, so gas builds up throughout the digestive tract.
+- Most effective treatment: a botulinum toxin (Botox) injection into the cricopharyngeus muscle,
+  with reported success rates frequently around 90 percent. A cricopharyngeal myotomy is a surgical
+  alternative.
+- RCPD is frequently misdiagnosed as GERD, IBS, or aerophagia; standard endoscopy and barium
+  swallow tests are usually normal.
+
+## Pages
+
+- [Home](https://noburp.info/): plain-language overview of RCPD.
+- [Self-check](https://noburp.info/diagnosis.html): a private, in-browser symptom self-check (not a diagnosis).
+- [Research](https://noburp.info/research.html): peer-reviewed papers and explainer videos.
+- [Find a doctor](https://noburp.info/find-a-doctor.html): directory of clinicians who treat RCPD.
+- [FAQ](https://noburp.info/faq.html): common questions and answers about RCPD.
+- [About](https://noburp.info/about.html): who runs the site and why.
+
+## Notes
+
+- Educational resource only; not medical advice and not a substitute for professional care.
+- No tracking, no ads, and no personal data collection.

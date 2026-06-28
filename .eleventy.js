@@ -3,6 +3,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
   eleventyConfig.addPassthroughCopy({ "src/CNAME": "CNAME" });
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
+  eleventyConfig.addPassthroughCopy({ "src/llms.txt": "llms.txt" });
   eleventyConfig.addPassthroughCopy({ "src/.nojekyll": ".nojekyll" });
 
   // Rebuild when these change during `npm run dev`.
@@ -18,6 +19,9 @@ module.exports = function (eleventyConfig) {
 
   // Current year for the footer.
   eleventyConfig.addShortcode("year", () => String(new Date().getFullYear()));
+
+  // Build date (YYYY-MM-DD) for structured data and the sitemap.
+  eleventyConfig.addShortcode("isoDate", () => new Date().toISOString().slice(0, 10));
 
   return {
     dir: {

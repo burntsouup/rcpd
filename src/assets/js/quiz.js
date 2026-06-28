@@ -58,41 +58,67 @@
     showStep(0);
   }
 
-  function score() {
-    return steps.reduce(function (sum, step) {
+  function values() {
+    return steps.map(function (step) {
       var picked = step.querySelector("input[type=radio]:checked");
-      return sum + (picked ? parseInt(picked.value, 10) : 0);
-    }, 0);
+      return picked ? parseInt(picked.value, 10) : 0;
+    });
   }
 
   function finish() {
-    var total20 = score(); // 0..20
-    var band, title, text;
-    if (total20 >= 14) {
-      band = ["band--high", "Strong overlap with RCPD"];
-      title = "Your answers line up closely with RCPD.";
+    // The first question (inability to burp) is the cardinal symptom of RCPD:
+    // if someone burps normally, RCPD is essentially ruled out regardless of the
+    // rest. So it gates the result and is weighted double in the score.
+    var v = values();
+    var cardinal = v[0]; // 0-4
+    var support = v.slice(1).reduce(function (a, b) {
+      return a + b;
+    }, 0); // 0-20
+
+    var band, label, title, text;
+
+    if (cardinal === 0) {
+      band = "band--low";
+      label = "RCPD looks unlikely";
+      title = "You can burp, which makes RCPD unlikely.";
       text =
-        "Several of your responses match the hallmark pattern of RCPD. Consider seeing a " +
-        "laryngologist (a throat-focused ENT) for an evaluation. The directory can help you start.";
-    } else if (total20 >= 7) {
-      band = ["band--mod", "Some overlap with RCPD"];
-      title = "Some of your answers overlap with RCPD.";
-      text =
-        "You report some symptoms associated with RCPD. It may be worth tracking them and " +
-        "speaking with a healthcare professional, especially if they affect daily life.";
+        "RCPD is defined by being unable to burp, so your answers don't fit the usual pattern. " +
+        "If bloating, gas, or discomfort still bother you, they may have another cause \u2014 such " +
+        "as reflux, IBS, or swallowing air \u2014 that's worth raising with a doctor.";
     } else {
-      band = ["band--low", "Little overlap with RCPD"];
-      title = "Your answers show little overlap with RCPD.";
-      text =
-        "Your responses don't strongly match the typical RCPD pattern. If you still have concerns, " +
-        "a healthcare professional is the best next step.";
+      // Cardinal symptom carries the most weight; a "strong match" also requires
+      // the inability to burp to be frequent (Often/Always), not just present.
+      var pts = cardinal * 3 + support; // 3-32
+      if (pts >= 20 && cardinal >= 3) {
+        band = "band--high";
+        label = "Strong match with RCPD";
+        title = "Your answers line up closely with RCPD.";
+        text =
+          "Your responses match the hallmark pattern of RCPD \u2014 an inability to burp alongside " +
+          "gurgling, bloating, and excess gas. Consider seeing a laryngologist (a throat-focused " +
+          "ENT) for an evaluation. RCPD is treatable, most often with a single Botox injection.";
+      } else if (pts >= 11) {
+        band = "band--mod";
+        label = "Possible match with RCPD";
+        title = "Some of your answers overlap with RCPD.";
+        text =
+          "You report several symptoms associated with RCPD. It may be worth tracking them and " +
+          "speaking with a laryngologist or your doctor, especially if they affect your daily life.";
+      } else {
+        band = "band--low";
+        label = "Weak match with RCPD";
+        title = "Only a few of your answers overlap with RCPD.";
+        text =
+          "You have some symptoms, but they don't strongly fit the RCPD pattern. If you remain " +
+          "concerned \u2014 particularly if you genuinely cannot burp \u2014 a doctor is the best next step.";
+      }
     }
 
-    document.getElementById("result-band").className = "band " + band[0];
-    document.getElementById("result-band").textContent = band[1];
+    var bandEl = document.getElementById("result-band");
+    bandEl.className = "band " + band;
+    bandEl.textContent = label;
     document.getElementById("result-title").textContent = title;
-    document.getElementById("result-text").textContent =
-      text + " (Self-check score: " + total20 + " of 20.)";
+    document.getElementById("result-text").textContent = text;
 
     progress.hidden = true;
     stepsWrap.hidden = true;

@@ -2,7 +2,7 @@
 layout: base.njk
 permalink: /diagnosis.html
 title: Self-check
-description: "A short, private RCPD symptom self-check. Five questions to see how closely your experience matches no-burp syndrome. Not a diagnosis."
+description: "A short, private RCPD symptom self-check based on the recognized symptom pattern. A few questions to see how closely your experience matches no-burp syndrome. Not a diagnosis."
 scripts:
   - /assets/js/quiz.js
 ---
@@ -12,8 +12,8 @@ scripts:
     <p class="eyebrow">Self-check</p>
     <h1>Do my symptoms match RCPD?</h1>
     <p class="lead">
-      Five quick questions about how you experience burping, bloating, and trapped air.
-      Everything stays in your browser &mdash; nothing is sent or saved.
+      Six quick questions based on the symptom pattern clinicians associate with RCPD. It takes
+      about a minute, and everything stays in your browser &mdash; nothing is sent, stored, or shared.
     </p>
   </div>
 </section>
@@ -23,31 +23,33 @@ scripts:
     <form id="quiz" class="quiz" novalidate>
       <div id="quiz-intro">
         <p class="callout callout--note">
-          This is an educational self-check, <strong>not a diagnosis</strong>. Only a qualified
-          clinician can diagnose RCPD. Use your result as a starting point for that conversation.
+          This is an educational self-check, <strong>not a diagnosis</strong>. It can't tell you
+          whether you have RCPD &mdash; only a qualified clinician can do that. Use your result as a
+          starting point for that conversation.
         </p>
         <button type="button" class="btn btn--primary" id="quiz-start">Start the self-check</button>
       </div>
 
       <div id="quiz-progress" hidden>
         <div class="progress"><div class="progress__bar" id="progress-bar"></div></div>
-        <p class="progress__text" id="progress-text">Question 1 of 5</p>
+        <p class="progress__text" id="progress-text">Question 1 of 6</p>
       </div>
 
       <div id="quiz-steps" hidden>
         <fieldset class="quiz__q" data-step="1" hidden>
-          <legend>1. Are you physically unable to burp, even when you feel the urge or try to force one (for example, with carbonated drinks or by swallowing air)?</legend>
+          <legend>1. When you feel the urge to burp, are you unable to &mdash; with nothing coming up, even after fizzy drinks or swallowing air?</legend>
+          <p class="quiz__hint">Being unable to burp is the central feature of RCPD.</p>
           <div class="options">
-            <label class="option"><input type="radio" name="q1" value="0"> Never</label>
+            <label class="option"><input type="radio" name="q1" value="0"> Never &mdash; I burp normally</label>
             <label class="option"><input type="radio" name="q1" value="1"> Rarely</label>
             <label class="option"><input type="radio" name="q1" value="2"> Sometimes</label>
             <label class="option"><input type="radio" name="q1" value="3"> Often</label>
-            <label class="option"><input type="radio" name="q1" value="4"> Always</label>
+            <label class="option"><input type="radio" name="q1" value="4"> Always &mdash; I can't burp at all</label>
           </div>
         </fieldset>
 
         <fieldset class="quiz__q" data-step="2" hidden>
-          <legend>2. Do you hear gurgling, rumbling, or croaking noises in your throat or upper chest, especially after meals or fizzy drinks?</legend>
+          <legend>2. Do you hear gurgling, croaking, or rumbling noises low in your throat or chest, especially after eating or drinking?</legend>
           <div class="options">
             <label class="option"><input type="radio" name="q2" value="0"> Never</label>
             <label class="option"><input type="radio" name="q2" value="1"> Rarely</label>
@@ -58,7 +60,7 @@ scripts:
         </fieldset>
 
         <fieldset class="quiz__q" data-step="3" hidden>
-          <legend>3. Do you feel bloating, pressure, or discomfort in your upper abdomen or chest after eating or drinking, as if gas is trapped?</legend>
+          <legend>3. Do you get uncomfortable bloating or pressure in your chest or upper abdomen, made worse by carbonation or large meals?</legend>
           <div class="options">
             <label class="option"><input type="radio" name="q3" value="0"> Never</label>
             <label class="option"><input type="radio" name="q3" value="1"> Rarely</label>
@@ -69,7 +71,7 @@ scripts:
         </fieldset>
 
         <fieldset class="quiz__q" data-step="4" hidden>
-          <legend>4. Do you relieve trapped air in other ways &mdash; passing gas often, &ldquo;air-vomiting,&rdquo; or lying down &mdash; rather than by burping naturally?</legend>
+          <legend>4. Do you pass gas (flatulence) far more than seems normal &mdash; as if air that can't come up has to find its way out the other end?</legend>
           <div class="options">
             <label class="option"><input type="radio" name="q4" value="0"> Never</label>
             <label class="option"><input type="radio" name="q4" value="1"> Rarely</label>
@@ -80,13 +82,24 @@ scripts:
         </fieldset>
 
         <fieldset class="quiz__q" data-step="5" hidden>
-          <legend>5. Does the inability to burp affect your quality of life &mdash; avoiding social events, changing your diet, or causing anxiety about the discomfort?</legend>
+          <legend>5. Do you get a &ldquo;stuck air&rdquo; feeling or nausea that's only relieved by lying down, passing gas, or air slowly working its way up your throat?</legend>
           <div class="options">
             <label class="option"><input type="radio" name="q5" value="0"> Never</label>
             <label class="option"><input type="radio" name="q5" value="1"> Rarely</label>
             <label class="option"><input type="radio" name="q5" value="2"> Sometimes</label>
             <label class="option"><input type="radio" name="q5" value="3"> Often</label>
             <label class="option"><input type="radio" name="q5" value="4"> Always</label>
+          </div>
+        </fieldset>
+
+        <fieldset class="quiz__q" data-step="6" hidden>
+          <legend>6. Does not being able to burp affect your daily life &mdash; your eating, social plans, or anxiety levels?</legend>
+          <div class="options">
+            <label class="option"><input type="radio" name="q6" value="0"> Never</label>
+            <label class="option"><input type="radio" name="q6" value="1"> Rarely</label>
+            <label class="option"><input type="radio" name="q6" value="2"> Sometimes</label>
+            <label class="option"><input type="radio" name="q6" value="3"> Often</label>
+            <label class="option"><input type="radio" name="q6" value="4"> Always</label>
           </div>
         </fieldset>
 
@@ -106,7 +119,9 @@ scripts:
           <button type="button" class="btn btn--ghost" id="quiz-restart">Start over</button>
         </div>
         <p class="figure-note">
-          This self-check is for information only and is not a medical diagnosis.
+          This self-check is for information only and is not a medical diagnosis. RCPD is usually a
+          lifelong pattern &mdash; if your symptoms started suddenly or recently, mention that to a
+          doctor, as it can point to a different cause.
         </p>
       </div>
     </form>
