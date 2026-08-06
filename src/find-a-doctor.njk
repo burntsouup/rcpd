@@ -2,7 +2,11 @@
 layout: base.njk
 permalink: /find-a-doctor.html
 title: Find a doctor
-description: "A community-built directory of doctors who diagnose and treat RCPD (no-burp syndrome). Search by name, city, state, or country."
+lastmodDeps:
+  - data/doctors.csv
+eleventyComputed:
+  metaTitle: "Find an RCPD Doctor Near You — {{ regions.total }} Specialists Worldwide"
+  description: "Search a community-built directory of {{ regions.total }} clinicians across {{ regions.countryCount }} countries who diagnose and treat RCPD (no-burp syndrome). Browse by country, state, or province."
 scripts:
   - /assets/js/doctors.js
 ---
@@ -32,6 +36,16 @@ scripts:
       </p>
     </div>
 
+    <nav class="region-nav" aria-label="Doctors by country">
+      <h2 class="region-nav__title">Browse by country</h2>
+      <ul class="region-nav__list">
+        {%- for country in regions.listed %}
+        <li><a href="{{ country.url }}">{{ country.name }} <span>{{ country.count }}</span></a></li>
+        {%- endfor %}
+        <li><a href="/doctors/">All regions <span>&rarr;</span></a></li>
+      </ul>
+    </nav>
+
     <div class="finder__controls">
       <label class="visually-hidden" for="doctor-search">Search the directory</label>
       <input
@@ -53,18 +67,7 @@ scripts:
 
     <div class="doctor-grid" id="doctor-grid">
       {%- for doc in doctors %}
-      <article class="doctor" data-search="{{ doc.search }}">
-        <h2 class="doctor__name">{{ doc.name }}</h2>
-        {% if doc.specialty %}<p class="doctor__specialty">{{ doc.specialty }}</p>{% endif %}
-        {% if doc.clinic %}<p class="doctor__clinic">{{ doc.clinic }}</p>{% endif %}
-        {% if doc.location %}<p class="doctor__location">{{ doc.location }}</p>{% endif %}
-        {% if doc.phone or doc.website %}
-        <div class="doctor__contact">
-          {% if doc.phone %}<a href="{{ doc.phone | telHref }}">{{ doc.phone }}</a>{% endif %}
-          {% if doc.website %}<a href="{{ doc.website }}" target="_blank" rel="noopener">Visit website</a>{% endif %}
-        </div>
-        {% endif %}
-      </article>
+      {% include "partials/doctor-card.njk" %}
       {%- endfor %}
     </div>
 

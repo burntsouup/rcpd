@@ -1,0 +1,133 @@
+---
+layout: base.njk
+pagination:
+  data: regions.pages
+  size: 1
+  alias: region
+  # Without this Eleventy puts only the FIRST paginated page in collections,
+  # so the sitemap would list one region instead of all of them.
+  addAllPagesToCollections: true
+permalink: "{{ region.url }}index.html"
+lastmodDeps:
+  - data/doctors.csv
+eleventyComputed:
+  title: "RCPD doctors in {{ region.name }}"
+  metaTitle: "RCPD Doctors in {{ region.name }} — {{ region.count }} Specialists"
+  description: "Find a doctor who treats RCPD (no-burp syndrome) in {{ region.name }}{% if region.type == 'subdivision' %}, {{ region.country }}{% endif %}. {{ region.count }} clinicians from the community-built r/noburp directory, with clinic and contact details."
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "{{ site.url }}{{ page.url }}#breadcrumbs",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "{{ site.url }}/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Find a doctor",
+      "item": "{{ site.url }}/find-a-doctor.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Doctors by region",
+      "item": "{{ site.url }}/doctors/"
+    }{% if region.type == 'subdivision' %},
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": {{ region.country | dump | safe }},
+      "item": "{{ site.url }}{{ region.countryUrl }}"
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": {{ region.name | dump | safe }},
+      "item": "{{ site.url }}{{ region.url }}"
+    }{% else %},
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": {{ region.name | dump | safe }},
+      "item": "{{ site.url }}{{ region.url }}"
+    }{% endif %}
+  ]
+}
+</script>
+
+<section class="page-head section section--tight">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/find-a-doctor.html">Find a doctor</a>
+      <span aria-hidden="true">/</span>
+      <a href="/doctors/">By region</a>
+      {%- if region.type == 'subdivision' %}
+      <span aria-hidden="true">/</span>
+      <a href="{{ region.countryUrl }}">{{ region.country }}</a>
+      {%- endif %}
+    </nav>
+    <h1>RCPD doctors in {{ region.name }}</h1>
+    <p class="lead">
+      {{ region.count }} clinicians in {{ region.name }}{% if region.type == 'subdivision' %}, {{ region.country }}{% endif %}
+      who have been reported as diagnosing and treating RCPD &mdash; retrograde cricopharyngeal
+      dysfunction, or no-burp syndrome. Contact details are listed for each.
+    </p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="callout callout--note">
+      <p>
+        <strong>Please read before you contact anyone.</strong> This list comes from the
+        community-maintained <a href="{{ site.reddit }}" target="_blank" rel="noopener">r/noburp</a>
+        specialists map &mdash; clinicians that patients have reported as treating RCPD with
+        Botox. It is <strong>not</strong> an endorsement, and most entries link to a general
+        clinic or hospital profile rather than an RCPD-specific page. Please
+        <strong>confirm the clinician currently treats RCPD when you contact them</strong>.
+      </p>
+    </div>
+
+    {%- if region.subdivisions and region.subdivisions.length %}
+    <nav class="region-nav" aria-label="{{ region.name }} {{ region.subdivisionLabel }}s">
+      <h2 class="region-nav__title">Browse by {{ region.subdivisionLabel }}</h2>
+      <ul class="region-nav__list">
+        {%- for sub in region.subdivisions %}
+        <li><a href="{{ sub.url }}">{{ sub.name }} <span>{{ sub.count }}</span></a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    {%- endif %}
+
+    <div class="doctor-grid">
+      {%- for doc in region.doctors %}
+      {% include "partials/doctor-card.njk" %}
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="panel">
+      <p class="eyebrow">Not finding anyone close?</p>
+      <h2>Search the full directory</h2>
+      <p class="prose">
+        The complete directory covers {{ regions.total }} clinicians across
+        {{ regions.countryCount }} countries and is searchable by name, clinic, city, state or
+        country. Many people travel to reach a clinician experienced with RCPD.
+      </p>
+      <div class="cluster">
+        <a class="btn btn--primary" href="/find-a-doctor.html">Search all {{ regions.total }} doctors</a>
+        <a class="btn btn--ghost" href="/doctors/">Browse other regions</a>
+      </div>
+    </div>
+  </div>
+</section>

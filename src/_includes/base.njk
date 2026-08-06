@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  {%- set pageTitle = title + " · " + site.shortTitle if title else site.title -%}
+  {%- set defaultTitle = (title + " · " + site.shortTitle) if title else site.title -%}
+  {%- set pageTitle = metaTitle if metaTitle else defaultTitle -%}
   {%- set metaDescription = description if description else site.description -%}
   {%- set canonical = site.url + page.url -%}
   {%- set isLegal = page.url == "/tos.html" or page.url == "/privacy.html" or page.url == "/404.html" -%}
@@ -25,13 +26,13 @@
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="{{ site.name }}">
-  <meta property="og:title" content="{{ title if title else site.title }}">
+  <meta property="og:title" content="{{ pageTitle }}">
   <meta property="og:description" content="{{ metaDescription }}">
   <meta property="og:url" content="{{ canonical }}">
   <meta property="og:image" content="{{ site.url }}/assets/img/og-image.png">
   <meta property="og:locale" content="{{ site.locale }}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="{{ title if title else site.title }}">
+  <meta name="twitter:title" content="{{ pageTitle }}">
   <meta name="twitter:description" content="{{ metaDescription }}">
   <meta name="twitter:image" content="{{ site.url }}/assets/img/og-image.png">
 
@@ -73,9 +74,8 @@
         "inLanguage": "{{ site.lang }}",
         "isPartOf": { "@id": "{{ site.url }}/#website" },
         "publisher": { "@id": "{{ site.url }}/#organization" },
-        "dateModified": "{% isoDate %}"{% if not isLegal %},
-        "about": { "@id": "{{ site.url }}/#rcpd" },
-        "lastReviewed": "{% isoDate %}"{% endif %}
+        "dateModified": "{{ page.inputPath | lastModified(lastmodDeps) }}"{% if not isLegal %},
+        "about": { "@id": "{{ site.url }}/#rcpd" }{% endif %}
       }
     ]
   }
@@ -136,7 +136,9 @@
         <ul>
           <li><a href="/about.html">About</a></li>
           <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="/is-rcpd-dangerous.html">Is RCPD dangerous?</a></li>
           <li><a href="/find-a-doctor.html">Find a doctor</a></li>
+          <li><a href="/doctors/">Doctors by region</a></li>
         </ul>
       </nav>
 

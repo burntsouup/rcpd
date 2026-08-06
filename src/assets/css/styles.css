@@ -859,6 +859,81 @@ p {
   color: var(--muted);
 }
 
+/* ---- Regional directory pages -------------------------------------------- */
+.crumbs {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+.crumbs a {
+  color: var(--teal);
+}
+.crumbs span {
+  color: var(--line-strong);
+}
+.region-nav {
+  margin-bottom: 2rem;
+}
+.region-nav__title {
+  font-size: 1.05rem;
+  margin: 0 0 0.75rem;
+}
+.region-nav__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.region-nav__list a {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+.region-nav__list a:hover {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+.region-nav__list a span {
+  font-weight: 400;
+  color: var(--muted);
+}
+.region-block {
+  padding-block: 1.35rem;
+  border-bottom: 1px solid var(--line);
+}
+.region-block:last-child {
+  border-bottom: 0;
+}
+.region-block__title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-size: 1.3rem;
+  margin: 0 0 0.75rem;
+}
+.region-block__count {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 400;
+  color: var(--muted);
+}
+
 /* ---- Footer -------------------------------------------------------------- */
 .site-footer {
   flex-shrink: 0;

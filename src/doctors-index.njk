@@ -1,0 +1,77 @@
+---
+layout: base.njk
+permalink: /doctors/index.html
+title: Doctors by region
+lastmodDeps:
+  - data/doctors.csv
+eleventyComputed:
+  metaTitle: "RCPD Doctors by Country and State — {{ regions.total }} Specialists"
+  description: "Browse {{ regions.total }} clinicians who treat RCPD (no-burp syndrome) across {{ regions.countryCount }} countries. Jump straight to the doctors listed in your country, state or province."
+---
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "@id": "{{ site.url }}/doctors/#breadcrumbs",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+    { "@type": "ListItem", "position": 2, "name": "Find a doctor", "item": "{{ site.url }}/find-a-doctor.html" },
+    { "@type": "ListItem", "position": 3, "name": "Doctors by region", "item": "{{ site.url }}/doctors/" }
+  ]
+}
+</script>
+
+<section class="page-head section section--tight">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="/find-a-doctor.html">Find a doctor</a>
+    </nav>
+    <h1>RCPD doctors by region</h1>
+    <p class="lead">
+      The directory covers {{ regions.total }} clinicians across {{ regions.countryCount }}
+      countries. Pick a country below &mdash; or
+      <a href="/find-a-doctor.html">search the whole directory</a> if you would rather look by
+      name or city.
+    </p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap">
+    {%- for country in regions.listed %}
+    <div class="region-block">
+      <h2 class="region-block__title">
+        <a href="{{ country.url }}">{{ country.name }}</a>
+        <span class="region-block__count">{{ country.count }} doctors</span>
+      </h2>
+      {%- if country.subdivisions.length %}
+      <ul class="region-nav__list">
+        {%- for sub in country.subdivisions %}
+        <li><a href="{{ sub.url }}">{{ sub.name }} <span>{{ sub.count }}</span></a></li>
+        {%- endfor %}
+      </ul>
+      {%- endif %}
+    </div>
+    {%- endfor %}
+  </div>
+</section>
+
+{%- if regions.unlisted.length %}
+<section class="section section--tight">
+  <div class="wrap">
+    <div class="panel">
+      <h2>Also listed</h2>
+      <p class="prose">
+        These countries have fewer than {{ regions.minDoctors }} clinicians in the directory, so
+        they don't have their own page yet. They are all included in the
+        <a href="/find-a-doctor.html">searchable directory</a> &mdash; search the country name to
+        see them.
+      </p>
+      <p class="prose">
+        {% for country in regions.unlisted %}{{ country.name }} ({{ country.count }}){% if not loop.last %} &middot; {% endif %}{% endfor %}
+      </p>
+    </div>
+  </div>
+</section>
+{%- endif %}

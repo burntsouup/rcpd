@@ -20,13 +20,18 @@
   alternative.
 - RCPD is frequently misdiagnosed as GERD, IBS, or aerophagia; standard endoscopy and barium
   swallow tests are usually normal.
+- RCPD is not considered dangerous or life-threatening, and has not been shown to cause lasting
+  physical damage. Its main burden is on quality of life. It behaves as a lifelong, stable trait
+  rather than a progressive disease.
 
 ## Pages
 
 - [Home](https://noburp.info/): plain-language overview of RCPD.
 - [Self-check](https://noburp.info/diagnosis.html): a private, in-browser symptom self-check (not a diagnosis).
+- [Is RCPD dangerous?](https://noburp.info/is-rcpd-dangerous.html): why RCPD is not life-threatening, what it does affect, and the symptoms that warrant medical attention.
 - [Research](https://noburp.info/research.html): peer-reviewed papers and explainer videos.
-- [Find a doctor](https://noburp.info/find-a-doctor.html): directory of clinicians who treat RCPD.
+- [Find a doctor](https://noburp.info/find-a-doctor.html): searchable directory of clinicians who treat RCPD.
+- [Doctors by region](https://noburp.info/doctors/): the same directory broken down by country, and by state or province for the US and Canada.
 - [FAQ](https://noburp.info/faq.html): common questions and answers about RCPD.
 - [About](https://noburp.info/about.html): who runs the site and why.
 

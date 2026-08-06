@@ -1,0 +1,13 @@
+<article class="doctor" data-search="{{ doc.search }}">
+  <h2 class="doctor__name">{{ doc.name }}</h2>
+  {% if doc.specialty %}<p class="doctor__meta">{{ doc.specialty }}</p>{% endif %}
+  {% if doc.clinic %}<p class="doctor__clinic">{{ doc.clinic }}</p>{% endif %}
+  {% if doc.address %}<p class="doctor__meta">{{ doc.address }}</p>{% endif %}
+  {% if doc.location %}<p class="doctor__meta">{{ doc.location }}{% if doc.postal %} {{ doc.postal }}{% endif %}</p>{% endif %}
+  {% if doc.phone or doc.website %}
+  <div class="doctor__links">
+    {% if doc.phone %}<a href="{{ doc.phone | telHref }}">{{ doc.phone }}</a>{% endif %}
+    {% if doc.website %}<a href="{{ doc.website }}" target="_blank" rel="noopener">Visit website</a>{% endif %}
+  </div>
+  {% endif %}
+</article>
