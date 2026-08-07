@@ -13,8 +13,19 @@
   var cards = Array.prototype.slice.call(grid.querySelectorAll(".doctor"));
   var totalLabel = count ? count.getAttribute("data-total") || cards.length : cards.length;
 
+  // data-search is stored accent-free, so fold the query to match it.
+  var LETTERS = { æ: "ae", ø: "o", ß: "ss", ð: "d", þ: "th", œ: "oe", ł: "l", đ: "d" };
+  function fold(value) {
+    var out = value.normalize ? value.normalize("NFD").replace(/[\u0300-\u036f]/g, "") : value;
+    return out
+      .replace(/[æøßðþœłđ]/g, function (c) {
+        return LETTERS[c];
+      })
+      .replace(/[\u2010-\u2015]/g, "-");
+  }
+
   function update() {
-    var query = input.value.trim().toLowerCase();
+    var query = fold(input.value.trim().toLowerCase());
     var tokens = query ? query.split(/\s+/) : [];
     var shown = 0;
 

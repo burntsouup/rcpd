@@ -18,6 +18,17 @@ module.exports = function () {
 
   const clean = (v) => (typeof v === "string" ? v.trim() : "");
 
+  // Strip accents so "sao paulo" finds "São Paulo" and "munchen" finds "München".
+  // NFD handles combining marks; these letters are separate codepoints and need
+  // mapping by hand. The client-side filter folds the query the same way.
+  const LETTERS = { æ: "ae", ø: "o", ß: "ss", ð: "d", þ: "th", œ: "oe", ł: "l", đ: "d" };
+  const fold = (v) =>
+    v
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .replace(/[æøßðþœłđ]/g, (c) => LETTERS[c])
+      .replace(/[\u2010-\u2015]/g, "-");
+
   const doctors = records
     .map((r) => {
       const name = clean(r["Name"]);
@@ -45,12 +56,20 @@ module.exports = function () {
       }
 
       const region = state || stateAbbr;
-      const location = [city, region, country].filter(Boolean).join(", ");
+      // Skip the region when it only repeats the city, so city-states and
+      // same-named cantons/counties don't render as "London, London, UK".
+      const location = [city, region === city ? "" : region, country]
+        .filter(Boolean)
+        .join(", ");
       const search = [
         name, clinic, city, state, stateAbbr, country, postal, specialty, keywords,
       ]
         .join(" ")
         .toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[æøßðþœłđ]/g, (c) => LETTERS[c])
+        .replace(/[\u2010-\u2015]/g, "-")
         .replace(/\s+/g, " ")
         .trim();
 
