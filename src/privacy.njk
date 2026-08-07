@@ -2,6 +2,9 @@
 layout: base.njk
 permalink: /privacy.html
 title: Privacy
+# Bump only when the policy itself changes, not for wording or template tweaks.
+# Quoted so YAML keeps it a string; unquoted it becomes a Date and shifts by timezone.
+updated: "2026-06-28"
 description: "Privacy policy for No Burp — a static site with no analytics, no cookies, and no data collection."
 ---
 
@@ -9,7 +12,7 @@ description: "Privacy policy for No Burp — a static site with no analytics, no
   <div class="wrap wrap--narrow">
     <p class="eyebrow">Legal</p>
     <h1>Privacy</h1>
-    <p class="figure-note">Last updated {% year %}</p>
+    <p class="figure-note">Last updated <time datetime="{{ updated }}">{{ updated }}</time></p>
   </div>
 </section>
 

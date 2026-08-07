@@ -2,6 +2,9 @@
 layout: base.njk
 permalink: /tos.html
 title: Terms of Service
+# Bump only when the terms themselves change, not for wording or template tweaks.
+# Quoted so YAML keeps it a string; unquoted it becomes a Date and shifts by timezone.
+updated: "2026-06-28"
 description: "Terms of use for No Burp — an educational RCPD resource. Not medical advice."
 ---
 
@@ -9,7 +12,7 @@ description: "Terms of use for No Burp — an educational RCPD resource. Not med
   <div class="wrap wrap--narrow">
     <p class="eyebrow">Legal</p>
     <h1>Terms of Service</h1>
-    <p class="figure-note">Last updated {% year %}</p>
+    <p class="figure-note">Last updated <time datetime="{{ updated }}">{{ updated }}</time></p>
   </div>
 </section>
 
