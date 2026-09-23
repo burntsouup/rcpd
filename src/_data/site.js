@@ -19,6 +19,7 @@ module.exports = {
   nav: [
     { text: "Home", url: "/" },
     { text: "Self-check", url: "/diagnosis.html" },
+    { text: "Treatment", url: "/rcpd-treatment.html" },
     { text: "Research", url: "/research.html" },
     { text: "Find a doctor", url: "/find-a-doctor.html" },
     { text: "FAQ", url: "/faq.html" },

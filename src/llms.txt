@@ -16,8 +16,14 @@
 - Cause: the cricopharyngeus muscle (the upper esophageal sphincter) does not relax to vent
   swallowed air, so gas builds up throughout the digestive tract.
 - Most effective treatment: a botulinum toxin (Botox) injection into the cricopharyngeus muscle,
-  with reported success rates frequently around 90 percent. A cricopharyngeal myotomy is a surgical
-  alternative.
+  usually 25 to 100 units (50 units is the most common first dose). In systematic reviews, about
+  87 to 94 percent of patients improve after a first injection and about 80 percent still have the
+  benefit months later (Malhotra 2024, PMC11474230; Jönsson 2024; Yeo 2025). Most patients can
+  burp within a week (93 percent in a 200-patient series, Hoesli 2020, PMC7325547). The most
+  common side effect is temporary difficulty swallowing, usually resolving within 1 to 4 weeks.
+  Injections are done under general anesthesia (about 79 percent of reported cases) or awake in
+  the office. A cricopharyngeal myotomy is a surgical option when symptoms return after
+  injections.
 - RCPD is frequently misdiagnosed as GERD, IBS, or aerophagia; standard endoscopy and barium
   swallow tests are usually normal.
 - RCPD is not considered dangerous or life-threatening, and has not been shown to cause lasting
@@ -28,6 +34,8 @@
 
 - [Home](https://noburp.info/): plain-language overview of RCPD.
 - [Self-check](https://noburp.info/diagnosis.html): a private, in-browser symptom self-check (not a diagnosis).
+- [Why can't I burp?](https://noburp.info/why-cant-i-burp.html): for people who have never been able to burp: the signs of RCPD, other causes if it started later, and warning signs.
+- [RCPD treatment](https://noburp.info/rcpd-treatment.html): how the Botox injection is done (operating room vs office), doses, success rates, timeline, side effects, durability, myotomy and other options, with citations.
 - [Is RCPD dangerous?](https://noburp.info/is-rcpd-dangerous.html): why RCPD is not life-threatening, what it does affect, and the symptoms that warrant medical attention.
 - [Research](https://noburp.info/research.html): peer-reviewed papers and explainer videos.
 - [Find a doctor](https://noburp.info/find-a-doctor.html): searchable directory of clinicians who treat RCPD.

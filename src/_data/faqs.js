@@ -72,7 +72,8 @@ const items = [
           "<strong>Cricopharyngeal myotomy:</strong> a surgical option that partially divides the muscle, sometimes considered when Botox doesn't provide a durable benefit.",
           "<strong>Self-help measures:</strong> some people find partial relief from posture changes, certain exercises, or limiting carbonation — but these manage symptoms rather than correct the underlying problem.",
         ],
-      },
+        extra: `<p><a class="arrow" href="/rcpd-treatment.html">What to expect from treatment, with the research &rarr;</a></p>`,
+  },
     ],
   },
   {
@@ -86,6 +87,7 @@ const items = [
     a: [
       "This is one of the more reassuring parts of RCPD treatment. Although Botox itself wears off over a few months, many people keep the ability to burp long after it fades — the reflex seems to “re-learn” itself, and for a large share of patients the benefit is durable or even permanent. A minority need a second injection, and a few choose a myotomy for a more permanent fix.",
     ],
+    extra: `<p><a class="arrow" href="/rcpd-treatment.html">What to expect from treatment, with the research &rarr;</a></p>`,
   },
   {
     q: "What should I do if I suspect I have RCPD?",

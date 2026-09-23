@@ -406,7 +406,7 @@ p {
   top: 6px;
 }
 
-@media (max-width: 48rem) {
+@media (max-width: 54rem) {
   .nav-toggle {
     display: inline-flex;
   }
@@ -1040,4 +1040,27 @@ p {
     transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
   }
+}
+
+/* ---- Source lists on evidence pages ------------------------------------- */
+.sources {
+  padding-left: 1.4rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.sources li + li {
+  margin-top: 0.45rem;
+}
+.sources a {
+  overflow-wrap: anywhere;
+}
+.sources li:target {
+  color: var(--ink);
+}
+sup {
+  line-height: 0;
+}
+sup a {
+  text-decoration: none;
+  font-weight: 700;
 }
