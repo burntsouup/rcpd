@@ -5,7 +5,7 @@ title: Privacy
 # Bump only when the policy itself changes, not for wording or template tweaks.
 # Quoted so YAML keeps it a string; unquoted it becomes a Date and shifts by timezone.
 updated: "2026-09-23"
-description: "Privacy policy for No Burp — a static site with no analytics, no cookies, and no data collection."
+description: "Privacy policy for No Burp — a static site with no analytics, no cookies, and no tracking."
 ---
 
 <section class="page-head section section--tight">
@@ -28,13 +28,16 @@ description: "Privacy policy for No Burp — a static site with no analytics, no
       <h2>1. What we collect</h2>
       <p>
         Nothing automatically. This site has no analytics, no tracking pixels, no cookies, and no
-        contact forms. We don't ask for or store any personal information.
+        contact forms, and it doesn't store anything in your browser.
       </p>
       <p>
         The directory's &ldquo;Suggest a doctor&rdquo; and &ldquo;Report outdated info&rdquo; links
         open your own email app with a pre-filled message. Nothing is sent unless you choose to send
-        it. If you do, we use what you write only to check and update the directory, and we never
-        publish your name or email address.
+        it. If you do, we receive your email address and whatever you write. We use it only to check
+        and update the directory and, if needed, to reply to you. We never publish your name or email
+        address, and we don't sell or share it. Please don't include health details you don't need
+        to. Emails are handled by our email provider (Microsoft Outlook) under its own privacy terms,
+        and we delete a message on request.
       </p>
 
       <h2>2. The self-check</h2>
@@ -43,35 +46,42 @@ description: "Privacy policy for No Burp — a static site with no analytics, no
         and result never leave your device and are not saved &mdash; refreshing the page clears them.
       </p>
 
-      <h2>3. Hosting</h2>
+      <h2>3. Clinicians listed in the directory</h2>
+      <p>
+        The <a href="/find-a-doctor.html">doctor directory</a> shows clinicians' names and
+        professional details: clinic, work address, work phone number, and profile page. This comes
+        from patient reports and from information clinicians or their employers have published. We
+        show it so people with RCPD can find care, and we don't publish anyone's personal (non-work)
+        contact details. Clinicians can ask us to correct or remove their listing at
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
+      </p>
+
+      <h2>4. Hosting</h2>
       <p>
         The site is hosted on GitHub Pages. Like any web host, GitHub may automatically process
         basic technical information (such as your IP address) in its server logs to deliver the
-        site and protect against abuse. That processing is governed by
+        site and protect against abuse. We don't have access to those logs. That processing is
+        governed by
         <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's privacy statement</a>.
       </p>
 
-      <h2>4. External links</h2>
+      <h2>5. External links</h2>
       <p>
         This site links to outside resources &mdash; research papers, videos, doctors' websites,
         and the r/noburp community. We aren't responsible for their content or privacy practices;
         please review their own policies.
       </p>
 
-      <h2>5. Your rights &amp; contact</h2>
+      <h2>6. Your rights &amp; contact</h2>
       <p>
-        We don't collect personal data through the site. If you've emailed us and want that
-        message deleted, or you have a privacy question, email
-        <a href="mailto:{{ site.email }}">{{ site.email }}</a>.
-      </p>
-
-      <h2>6. Regional privacy rights (GDPR, CCPA, and similar)</h2>
-      <p>
-        Laws such as the EU/UK GDPR and the California Consumer Privacy Act give people rights over
-        their personal data. Because this site collects, sells, and shares no personal data, there is
-        nothing for us to disclose, delete, or opt out of. If we ever add something that does process
-        personal data &mdash; for example, analytics &mdash; we will update this policy first and
-        describe your choices.
+        Laws such as Canada's PIPEDA, the EU/UK GDPR, and the California Consumer Privacy Act give
+        you rights over your personal data. For this site, that personal data is limited to emails
+        you send us and, for clinicians, directory listings. You can ask us to access, correct, or
+        delete that information, or ask a privacy question, by emailing
+        <a href="mailto:{{ site.email }}">{{ site.email }}</a>. We don't sell or share personal
+        data, and we don't use it for advertising. If we ever add something that processes personal
+        data &mdash; for example, analytics &mdash; we will update this policy first and describe
+        your choices.
       </p>
 
       <h2>7. Children's privacy</h2>

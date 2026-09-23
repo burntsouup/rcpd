@@ -13,7 +13,7 @@ lastmodDeps:
 eleventyComputed:
   title: "RCPD doctors in {{ region.name }}"
   metaTitle: "RCPD Doctors in {{ region.name }} — {{ region.count }} Specialists"
-  description: "{{ region.count }} clinicians in {{ region.name }} who treat RCPD (no-burp syndrome). From the community-built r/noburp specialists map, with clinic and contact details."
+  description: "{{ region.count }} clinicians in {{ region.name }} who treat RCPD (no-burp syndrome), reported by patients and checked against official sources, with clinic and contact details."
 ---
 
 <script type="application/ld+json">
@@ -86,10 +86,11 @@ eleventyComputed:
   <div class="wrap">
     <div class="callout callout--note">
       <p>
-        <strong>Please read before you contact anyone.</strong> This list comes from the
-        community-maintained <a href="{{ site.reddit }}" target="_blank" rel="noopener">r/noburp</a>
-        specialists map &mdash; clinicians that patients have reported as treating RCPD with
-        Botox. It is <strong>not</strong> an endorsement, and most entries link to a general
+        <strong>Please read before you contact anyone.</strong> These are clinicians that patients
+        have reported as treating RCPD, mostly with Botox. The list began with the
+        <a href="{{ site.reddit }}" target="_blank" rel="noopener">r/noburp</a> community's
+        specialists map, and we check listings against official sources. It is
+        <strong>not</strong> an endorsement, and most entries link to a general
         clinic or hospital profile rather than an RCPD-specific page. Please
         <strong>confirm the clinician currently treats RCPD when you contact them</strong>.
         A &ldquo;Details checked&rdquo; date means we confirmed then, from an official source, that
