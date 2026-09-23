@@ -42,6 +42,9 @@ module.exports = function () {
       const specialty = clean(r["Specialty"]);
       const keywords = clean(r["Additional Search Keywords"]);
       const address = clean(r["Address"]);
+      // YYYY-MM-DD when this listing's contact details were last confirmed.
+      const checkedRaw = clean(r["Last Checked"]);
+      const checked = /^\d{4}-\d{2}-\d{2}$/.test(checkedRaw) ? checkedRaw : "";
 
       // Only trust absolute http(s) links — guards against javascript: URLs.
       const rawSite = clean(r["Website"]);
@@ -76,7 +79,7 @@ module.exports = function () {
       return {
         name, city, state, stateAbbr, region, country, postal,
         clinic, phone, specialty, keywords, address,
-        website, websiteHost, location, search,
+        website, websiteHost, location, search, checked,
       };
     })
     .filter((d) => d.name)

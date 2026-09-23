@@ -1,4 +1,5 @@
 const { execFileSync } = require("child_process");
+const site = require("./src/_data/site.js");
 
 // Last commit date (YYYY-MM-DD) touching a file. Empty string if git can't answer,
 // e.g. an uncommitted new file or a build outside a git checkout.
@@ -35,6 +36,45 @@ module.exports = function (eleventyConfig) {
     if (!value) return "";
     const digits = String(value).replace(/[^\d+]/g, "");
     return digits ? "tel:" + digits : "";
+  });
+
+  // Link for directory suggestions and corrections: the configured form if there
+  // is one, otherwise a pre-filled email. kind is "suggest" or "report"; for a
+  // report, pass the doctor so the message says which listing is wrong.
+  eleventyConfig.addFilter("feedbackHref", (kind, doc) => {
+    const { email, directoryFeedback = {} } = site;
+    if (directoryFeedback.formUrl) return directoryFeedback.formUrl;
+
+    let subject, lines;
+    if (kind === "report" && doc) {
+      // Kept short: this link is repeated on every card of a 270+ card page.
+      subject = `Directory update: ${doc.name}${doc.location ? " (" + doc.location + ")" : ""}`;
+      lines = [
+        "What needs changing? (e.g. moved clinics, retired, wrong phone or website, no longer treats RCPD)",
+        "",
+      ];
+    } else {
+      subject = "Directory suggestion: a doctor who treats RCPD";
+      lines = [
+        "Doctor's name:",
+        "Clinic or hospital:",
+        "City and country:",
+        "Phone or website (if you have it):",
+        "How do you know they treat RCPD? (e.g. they treated me, a Reddit post, their website):",
+        "",
+      ];
+    }
+    const body = lines.join("\r\n");
+    return `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+
+  // "2026-09-23" -> "September 2026", for "last checked" dates.
+  eleventyConfig.addFilter("monthYear", (value) => {
+    const m = /^(\d{4})-(\d{2})/.exec(String(value || ""));
+    if (!m) return "";
+    const months = ["January", "February", "March", "April", "May", "June", "July",
+      "August", "September", "October", "November", "December"];
+    return `${months[Number(m[2]) - 1]} ${m[1]}`;
   });
 
   // Current year for the footer.

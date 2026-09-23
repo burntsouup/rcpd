@@ -854,6 +854,22 @@ p {
   font-weight: 700;
   font-size: 0.92rem;
 }
+.doctor__foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  margin: auto 0 0;
+  padding-top: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.doctor__foot a {
+  color: var(--muted);
+}
+.doctor__foot a:hover {
+  color: var(--ink);
+}
 .finder__empty {
   padding: 2rem 0;
   color: var(--muted);

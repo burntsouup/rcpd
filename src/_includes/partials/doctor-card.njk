@@ -10,4 +10,8 @@
     {% if doc.website %}<a href="{{ doc.website }}" target="_blank" rel="noopener">Visit website</a>{% endif %}
   </div>
   {% endif %}
+  <p class="doctor__foot">
+    {%- if doc.checked %}<span>Details checked <time datetime="{{ doc.checked }}">{{ doc.checked | monthYear }}</time></span>{% endif -%}
+    <a href="{{ 'report' | feedbackHref(doc) }}">Report outdated info</a>
+  </p>
 </article>

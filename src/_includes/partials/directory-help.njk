@@ -1,0 +1,19 @@
+{%- set directoryUpdated = "data/doctors.csv" | lastModified -%}
+<div class="panel panel--tint directory-help">
+  <p class="eyebrow">Help keep this list accurate</p>
+  <h2>Know a doctor who treats RCPD, or spot a mistake?</h2>
+  <p class="prose">
+    This directory is only as good as the community's reports. If a clinician treated your RCPD,
+    or a listing has moved, retired, or has the wrong contact details, let us know and we'll
+    check it and update the list. To fix a specific listing, use
+    &ldquo;Report outdated info&rdquo; on that doctor's card.
+  </p>
+  <div class="cluster">
+    <a class="btn btn--primary" href="{{ 'suggest' | feedbackHref }}">Suggest a doctor</a>
+    <a class="btn btn--ghost" href="{{ site.reddit }}" target="_blank" rel="noopener">Ask on r/noburp</a>
+  </div>
+  <p class="figure-note">
+    {%- if not site.directoryFeedback.formUrl %}Opens your email app with a short template. {% endif -%}
+    Directory last updated <time datetime="{{ directoryUpdated }}">{{ directoryUpdated | monthYear }}</time>.
+  </p>
+</div>
