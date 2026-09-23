@@ -29,7 +29,7 @@ const items = [
   {
     q: "What causes RCPD, and is it common?",
     a: [
-      "The exact cause isn't fully understood. In RCPD the cricopharyngeus muscle — the upper esophageal sphincter — doesn't relax to vent swallowed air the way it should, so gas builds up instead of being released as a burp. For most people it appears to be a lifelong trait, and many recall never having been able to burp. It's thought to be more common than once believed but remains widely under-recognized, so people often go years without a name for their symptoms.",
+      "The exact cause isn't fully understood. In RCPD the cricopharyngeus muscle — the upper esophageal sphincter — doesn't relax to vent swallowed air the way it should, so gas builds up instead of being released as a burp. For most people it appears to be a lifelong trait, and many recall never having been able to burp. Nobody knows yet how many people have it. It may be more common than once thought, and it's widely under-recognized, so people often go years without a name for their symptoms.",
     ],
   },
   {
@@ -85,7 +85,7 @@ const items = [
   {
     q: "Does the treatment last, or does it wear off?",
     a: [
-      "This is one of the more reassuring parts of RCPD treatment. Although Botox itself wears off over a few months, many people keep the ability to burp long after it fades — the reflex seems to “re-learn” itself, and for a large share of patients the benefit is durable or even permanent. A minority need a second injection, and a few choose a myotomy for a more permanent fix.",
+      "This is one of the more reassuring parts of RCPD treatment. Although Botox itself wears off over a few months, many people keep the ability to burp long after it fades — the reflex seems to “re-learn” itself, and for a large share of patients the benefit is durable or even permanent. Some people need a second injection (about one in five in the largest long-term study), and a few choose a myotomy for a more permanent fix.",
     ],
     extra: `<p><a class="arrow" href="/rcpd-treatment.html">What to expect from treatment, with the research &rarr;</a></p>`,
   },
@@ -96,7 +96,7 @@ const items = [
         list: [
           "Document your symptoms, including triggers and how often they happen.",
           "Consult a specialist — ideally a laryngologist (a throat-focused ENT).",
-          "Discuss treatment options; early intervention can help manage symptoms.",
+          "Ask about treatment options — most often a Botox injection.",
         ],
       },
     ],
@@ -111,7 +111,7 @@ const items = [
   {
     q: "What is emetophobia?",
     a: [
-      "Emetophobia is an intense fear of vomiting, seeing vomit, or feeling nauseous. RCPD can trigger or worsen it, since trapped gas can cause sensations similar to nausea and increase anxiety about vomiting.",
+      "Emetophobia is an intense fear of vomiting, seeing vomit, or feeling nauseous. Some people with RCPD also have it. Trapped gas can cause nausea-like sensations, and many people with RCPD find it hard to vomit, which can add to anxiety about being sick.",
     ],
   },
   {

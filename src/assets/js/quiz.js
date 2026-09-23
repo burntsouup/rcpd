@@ -96,7 +96,7 @@
         text =
           "Your responses match the hallmark pattern of RCPD \u2014 an inability to burp alongside " +
           "gurgling, bloating, and excess gas. Consider seeing a laryngologist (a throat-focused " +
-          "ENT) for an evaluation. RCPD is treatable, most often with a single Botox injection.";
+          "ENT) for an evaluation. RCPD is treatable, most often with a Botox injection.";
       } else if (pts >= 11) {
         band = "band--mod";
         label = "Possible match with RCPD";
