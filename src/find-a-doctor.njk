@@ -19,35 +19,16 @@ scripts:
       A directory of clinicians who diagnose and treat RCPD, compiled by the community. Search
       by name, clinic, city, state, or country to find someone near you.
     </p>
+    <p class="page-head__aside">
+      Know a doctor who treats RCPD?
+      <a href="{{ 'suggest' | feedbackHref }}">Suggest a doctor&nbsp;&rarr;</a>
+    </p>
   </div>
 </section>
 
 <section class="section section--tight">
   <div class="wrap">
-    <div class="callout callout--note">
-      <p>
-        <strong>How this directory is sourced.</strong> These are clinicians that patients have
-        reported as treating RCPD, mostly with Botox. The list began with the
-        <a href="{{ site.reddit }}" target="_blank" rel="noopener">r/noburp</a> community's
-        specialists map, and we check listings against official clinic and hospital sources.
-        Listing here is <strong>not</strong> an endorsement or a guarantee of treatment, and most
-        entries link to a general clinic or hospital profile rather than an RCPD-specific page.
-        Some clinicians publicly describe their RCPD work; for everyone else, please
-        <strong>confirm the clinician currently treats RCPD when you contact them</strong>.
-        A &ldquo;Details checked&rdquo; date means we confirmed then, from an official source, that
-        the clinician was still listed at that clinic &mdash; not that they treat RCPD.
-      </p>
-    </div>
-
-    <nav class="region-nav" aria-label="Doctors by country">
-      <h2 class="region-nav__title">Browse by country</h2>
-      <ul class="region-nav__list">
-        {%- for country in regions.listed %}
-        <li><a href="{{ country.url }}">{{ country.name }} <span>{{ country.count }}</span></a></li>
-        {%- endfor %}
-        <li><a href="/doctors/">All regions <span>&rarr;</span></a></li>
-      </ul>
-    </nav>
+    {% include "partials/directory-note.njk" %}
 
     <div class="finder__controls">
       <label class="visually-hidden" for="doctor-search">Search the directory</label>
@@ -64,9 +45,25 @@ scripts:
       </p>
     </div>
 
-    <p id="finder-empty" class="callout callout--note" hidden>
-      No doctors match your search. Try a broader term &mdash; a state, province, or country.
-    </p>
+    <nav class="region-nav" aria-label="Doctors by country">
+      <h2 class="region-nav__title">Browse by country</h2>
+      <ul class="region-nav__list">
+        {%- for country in regions.listed %}
+        <li><a href="{{ country.url }}">{{ country.name }} <span>{{ country.count }}</span></a></li>
+        {%- endfor %}
+        <li><a href="/doctors/">All regions <span>&rarr;</span></a></li>
+      </ul>
+    </nav>
+
+    <div id="finder-empty" class="callout callout--note" hidden>
+      <p>
+        No doctors match your search. Try a broader term &mdash; a state, province, or country.
+      </p>
+      <p>
+        Know a doctor near you who treats RCPD?
+        <a href="{{ 'suggest' | feedbackHref }}">Suggest a doctor&nbsp;&rarr;</a>
+      </p>
+    </div>
 
     <div class="doctor-grid" id="doctor-grid">
       {%- for doc in doctors %}

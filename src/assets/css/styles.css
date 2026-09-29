@@ -895,9 +895,24 @@ p {
 .region-nav {
   margin-bottom: 2rem;
 }
-/* The sourcing note sits directly above the country list on directory pages. */
-.callout + .region-nav {
-  margin-top: 2rem;
+/* The sourcing note sits directly above the search or country list on directory pages. */
+.callout + .region-nav,
+.callout + .finder__controls {
+  margin-top: 1rem;
+}
+.directory-note__more {
+  margin-top: 0.5rem;
+}
+.directory-note__more summary {
+  cursor: pointer;
+  font-weight: 700;
+  color: var(--teal);
+}
+.directory-note__more[open] summary {
+  margin-bottom: 0.5rem;
+}
+.finder__controls + .region-nav {
+  margin-bottom: 1.5rem;
 }
 .region-nav__title {
   font-size: 1.05rem;
@@ -1031,6 +1046,11 @@ p {
 }
 .page-head h1 {
   margin-bottom: 0.5rem;
+}
+.page-head__aside {
+  margin-top: 0.9rem;
+  font-weight: 700;
+  color: var(--ink-soft);
 }
 
 /* ---- Motion preferences -------------------------------------------------- */
