@@ -870,6 +870,10 @@ p {
 .doctor__foot a:hover {
   color: var(--ink);
 }
+.doctor__unverified {
+  color: var(--clay-hover);
+  font-weight: 700;
+}
 .finder__empty {
   padding: 2rem 0;
   color: var(--muted);

@@ -11,7 +11,8 @@
   </div>
   {% endif %}
   <p class="doctor__foot">
-    {%- if doc.checked %}<span>Details checked <time datetime="{{ doc.checked }}">{{ doc.checked | monthYear }}</time></span>{% endif -%}
+    {%- if doc.checked %}<span>Details checked <time datetime="{{ doc.checked }}">{{ doc.checked | monthYear }}</time></span>
+    {%- else %}<span class="doctor__unverified">Not yet verified</span>{% endif -%}
     <a href="{{ 'report' | feedbackHref(doc) }}">Report outdated info</a>
   </p>
 </article>
