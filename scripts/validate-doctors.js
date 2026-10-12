@@ -67,6 +67,11 @@ const CA_PROVINCES = new Set([
   "AB", "BC", "MB", "NB", "NL", "NS", "NT", "NU", "ON", "PE", "QC", "SK", "YT",
 ]);
 
+// Doctor-rating and "find a doctor" sites. A listing should point to the doctor's own
+// hospital or clinic page, because these sites go stale and are not the practice.
+const THIRD_PARTY_SITES =
+  /castle ?connolly|healthgrades|doximity|vitals\.com|webmd|zocdoc|usnews|\bent ?health\b|sharecare|ratemds|top ?doctors|doctoralia|npiprofile|npino|yelp|linkedin|facebook/i;
+
 const NAME_PREFIXES = new Set(["Dr", "Mr", "Ms", "Mrs", "Miss", "Prof", "Prof.", "Assoc", "Assoc."]);
 
 // More removals than this in one change is treated as an accident.
@@ -192,6 +197,9 @@ function validate(text, { baseline, today = new Date() } = {}) {
         else seenSites.set(key, label);
       }
     } else warn(line, `${label}: no website.`, "no website");
+    if (THIRD_PARTY_SITES.test(v.Website) || THIRD_PARTY_SITES.test(v["Clinic Name"])) {
+      warn(line, `${label}: points to a third-party directory instead of the doctor's own clinic page.`, "third-party directory instead of an official page");
+    }
     if (v.Phone && (v.Phone.match(/\d/g) || []).length < 7) err(line, `${label}: Phone "${v.Phone}" has fewer than 7 digits.`);
     if (!v.Phone) warn(line, `${label}: no phone number.`, "no phone number");
     if (!v.Address) warn(line, `${label}: no street address.`, "no street address");

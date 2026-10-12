@@ -49,6 +49,7 @@ description: "RCPD, or no-burp syndrome, is a treatable condition where the musc
       </p>
       <div class="cluster masthead__actions">
         <a class="btn btn--primary" href="/diagnosis.html">Try the self-check</a>
+        <a class="btn btn--ghost" href="/find-a-doctor.html">Find a doctor</a>
         <a class="btn btn--ghost" href="#what-is-rcpd">What is RCPD?</a>
       </div>
     </div>
@@ -144,6 +145,53 @@ description: "RCPD, or no-burp syndrome, is a treatable condition where the musc
         <a class="btn btn--primary" href="/rcpd-treatment.html">How treatment works</a>
         <a class="btn btn--ghost" href="/is-rcpd-dangerous.html">Is RCPD dangerous?</a>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="find-a-doctor">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="eyebrow">Directory</p>
+      <h2>Find a doctor near you</h2>
+    </div>
+    <p class="prose">
+      {{ regions.total }} clinicians across {{ regions.countryCount }} countries have been
+      reported by patients as treating RCPD. We check each listing against an official source
+      and label any we couldn't confirm. Pick your country, state or city, or search the whole
+      directory by name.
+    </p>
+
+    <nav class="region-nav" aria-label="Doctors by country">
+      <h3 class="region-nav__title">Countries</h3>
+      <ul class="region-nav__list">
+        {%- for item in regions.featured.countries %}
+        <li><a href="{{ item.url }}">{{ item.name }} <span>{{ item.count }}</span></a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+
+    <nav class="region-nav" aria-label="Doctors by US state">
+      <h3 class="region-nav__title">Popular US states</h3>
+      <ul class="region-nav__list">
+        {%- for item in regions.featured.states %}
+        <li><a href="{{ item.url }}">{{ item.name }} <span>{{ item.count }}</span></a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+
+    <nav class="region-nav" aria-label="Doctors by city">
+      <h3 class="region-nav__title">Popular cities</h3>
+      <ul class="region-nav__list">
+        {%- for item in regions.featured.cities %}
+        <li><a href="{{ item.url }}">{{ item.name }} <span>{{ item.count }}</span></a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+
+    <div class="cluster">
+      <a class="btn btn--primary" href="/find-a-doctor.html">Search all {{ regions.total }} doctors</a>
+      <a class="btn btn--ghost" href="/doctors/">Browse every region</a>
     </div>
   </div>
 </section>

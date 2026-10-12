@@ -88,3 +88,14 @@ test("missing phone or address only warns", () => {
   assert.deepStrictEqual(res.errors, []);
   assert.ok(res.warnings.length >= 2);
 });
+
+test("a listing that points to a third-party directory only warns", () => {
+  const res = run(toCsv([row({ Website: "https://www.enthealth.org/find-ent/jane-smith/" })]));
+  assert.deepStrictEqual(res.errors, []);
+  assert.ok(res.warnings.some((w) => /third-party/.test(w.msg)));
+  assert.ok(run(toCsv([row({ "Clinic Name": "CASTLE CONNOLLY TOP DOCTORS" })])).warnings.some((w) => /third-party/.test(w.msg)));
+  assert.ok(!run(toCsv([row()])).warnings.some((w) => /third-party/.test(w.msg)));
+  // "AdventHealth" contains the letters "ent health" but is a real health system.
+  assert.ok(!run(toCsv([row({ "Clinic Name": "AdventHealth Medical Group" })])).warnings.some((w) => /third-party/.test(w.msg)));
+  assert.ok(run(toCsv([row({ "Clinic Name": "ENThealth" })])).warnings.some((w) => /third-party/.test(w.msg)));
+});

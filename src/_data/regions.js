@@ -224,7 +224,17 @@ module.exports = function () {
     }
   }
 
+  // The places linked from the home page, always the ones with the most clinicians.
+  const bySize = (a, b) => b.count - a.count || a.name.localeCompare(b.name);
+  const usa = countries.find((c) => c.name === "United States");
+  const featured = {
+    countries: [...countries].sort(bySize).slice(0, 12).map(pick),
+    states: usa ? [...usa.subdivisions].sort(bySize).slice(0, 8).map(pick) : [],
+    cities: pages.filter((p) => p.type === "city").sort(bySize).slice(0, 8).map((p) => ({ name: p.heading, count: p.count, url: p.url })),
+  };
+
   return {
+    featured,
     total: doctors.length,
     countryCount: countries.length,
     countries,
