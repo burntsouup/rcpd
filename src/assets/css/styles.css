@@ -896,6 +896,17 @@ p {
 .crumbs span {
   color: var(--line-strong);
 }
+.region-glance {
+  margin: 1rem 0 1.75rem;
+  font-size: 0.95rem;
+  color: var(--ink-soft);
+}
+.region-glance p {
+  margin: 0 0 0.5rem;
+}
+.callout + .region-glance {
+  margin-top: 1.25rem;
+}
 .region-nav {
   margin-bottom: 2rem;
 }

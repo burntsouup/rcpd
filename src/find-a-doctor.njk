@@ -48,9 +48,9 @@ scripts:
     <nav class="region-nav" aria-label="Doctors by country">
       <h2 class="region-nav__title">Browse by country</h2>
       <ul class="region-nav__list">
-        {%- for country in regions.listed %}
+        {%- for country in regions.listed %}{% if loop.index <= 16 %}
         <li><a href="{{ country.url }}">{{ country.name }} <span>{{ country.count }}</span></a></li>
-        {%- endfor %}
+        {%- endif %}{%- endfor %}
         <li><a href="/doctors/">All regions <span>&rarr;</span></a></li>
       </ul>
     </nav>

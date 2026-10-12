@@ -10,7 +10,7 @@
     "clean": "rm -rf _site",
     "validate": "node scripts/validate-doctors.js",
     "check-listings": "node scripts/check-listings.js",
-    "test": "node --test scripts/validate-doctors.test.js scripts/check-listings.test.js"
+    "test": "node --test scripts/validate-doctors.test.js scripts/check-listings.test.js scripts/indexnow.test.js"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",

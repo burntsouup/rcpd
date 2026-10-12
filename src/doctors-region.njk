@@ -11,9 +11,9 @@ permalink: "{{ region.url }}index.html"
 lastmodDeps:
   - data/doctors.csv
 eleventyComputed:
-  title: "RCPD doctors in {{ region.name }}"
-  metaTitle: "RCPD Doctors in {{ region.name }} — {{ region.count }} Specialists"
-  description: "{{ region.count }} clinicians in {{ region.name }} who treat RCPD (no-burp syndrome), reported by patients and checked against official sources, with clinic and contact details."
+  title: "RCPD doctors in {{ region.heading }}"
+  metaTitle: "{{ region.metaTitle }}"
+  description: "{{ region.description }}"
 ---
 
 <script type="application/ld+json">
@@ -22,45 +22,19 @@ eleventyComputed:
   "@type": "BreadcrumbList",
   "@id": "{{ site.url }}{{ page.url }}#breadcrumbs",
   "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position": 1,
-      "name": "Home",
-      "item": "{{ site.url }}/"
-    },
-    {
-      "@type": "ListItem",
-      "position": 2,
-      "name": "Find a doctor",
-      "item": "{{ site.url }}/find-a-doctor.html"
-    },
-    {
-      "@type": "ListItem",
-      "position": 3,
-      "name": "Doctors by region",
-      "item": "{{ site.url }}/doctors/"
-    }{% if region.type == 'subdivision' %},
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": {{ region.country | dump | safe }},
-      "item": "{{ site.url }}{{ region.countryUrl }}"
-    },
-    {
-      "@type": "ListItem",
-      "position": 5,
-      "name": {{ region.name | dump | safe }},
-      "item": "{{ site.url }}{{ region.url }}"
-    }{% else %},
-    {
-      "@type": "ListItem",
-      "position": 4,
-      "name": {{ region.name | dump | safe }},
-      "item": "{{ site.url }}{{ region.url }}"
-    }{% endif %}
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ site.url }}/" },
+    { "@type": "ListItem", "position": 2, "name": "Find a doctor", "item": "{{ site.url }}/find-a-doctor.html" },
+    { "@type": "ListItem", "position": 3, "name": "Doctors by region", "item": "{{ site.url }}/doctors/" },
+    {%- for crumb in region.crumbs %}
+    { "@type": "ListItem", "position": {{ loop.index + 3 }}, "name": {{ crumb.name | dump | safe }}, "item": "{{ site.url }}{{ crumb.url }}" },
+    {%- endfor %}
+    { "@type": "ListItem", "position": {{ region.crumbs.length + 4 }}, "name": {{ region.name | dump | safe }}, "item": "{{ site.url }}{{ region.url }}" }
   ]
 }
 </script>
+{%- if region.itemListJson %}
+<script type="application/ld+json">{{ region.itemListJson | safe }}</script>
+{%- endif %}
 
 <section class="page-head section section--tight">
   <div class="wrap">
@@ -68,16 +42,17 @@ eleventyComputed:
       <a href="/find-a-doctor.html">Find a doctor</a>
       <span aria-hidden="true">/</span>
       <a href="/doctors/">By region</a>
-      {%- if region.type == 'subdivision' %}
+      {%- for crumb in region.crumbs %}
       <span aria-hidden="true">/</span>
-      <a href="{{ region.countryUrl }}">{{ region.country }}</a>
-      {%- endif %}
+      <a href="{{ crumb.url }}">{{ crumb.name }}</a>
+      {%- endfor %}
     </nav>
-    <h1>RCPD doctors in {{ region.name }}</h1>
+    <h1>RCPD doctors in {{ region.heading }}</h1>
     <p class="lead">
-      {{ region.count }} clinicians in {{ region.name }}{% if region.type == 'subdivision' %}, {{ region.country }}{% endif %}
-      who have been reported as diagnosing and treating RCPD &mdash; retrograde cricopharyngeal
-      dysfunction, or no-burp syndrome. Contact details are listed for each.
+      {{ region.countLabel }} in {{ region.place }}
+      who {% if region.count == 1 %}has{% else %}have{% endif %} been reported as diagnosing and treating RCPD &mdash;
+      retrograde cricopharyngeal dysfunction, or no-burp syndrome. Contact details are listed for
+      {% if region.count == 1 %}them{% else %}each{% endif %}.
     </p>
     <p class="page-head__aside">
       Know a doctor who treats RCPD?
@@ -90,12 +65,45 @@ eleventyComputed:
   <div class="wrap">
     {% include "partials/directory-note.njk" %}
 
+    <div class="region-glance">
+      <p>
+        <strong>Specialties listed:</strong>
+        {%- for s in region.specialties %} {{ s.name }} ({{ s.count }}){% if not loop.last %};{% endif %}{% endfor %}.
+      </p>
+      {%- if region.cityList and region.cityList.length > 1 %}
+      <p>
+        <strong>Where they practise:</strong>
+        {%- for c in region.cityList %}
+        {% if c.url %}<a href="{{ c.url }}">{{ c.name }}</a>{% else %}{{ c.name }}{% endif %} ({{ c.count }}){% if not loop.last %},{% endif %}
+        {%- endfor %}.
+      </p>
+      {%- endif %}
+      {%- if region.count < 3 %}
+      <p>
+        Only {{ region.countLabel }} {% if region.count == 1 %}is{% else %}are{% endif %} listed in {{ region.heading }}
+        so far. Many people with RCPD travel to reach a clinician experienced with it, so the places
+        below and the <a href="/find-a-doctor.html">full directory</a> are worth a look too.
+      </p>
+      {%- endif %}
+    </div>
+
     {%- if region.subdivisions and region.subdivisions.length %}
     <nav class="region-nav" aria-label="{{ region.name }} {{ region.subdivisionLabel }}s">
       <h2 class="region-nav__title">Browse by {{ region.subdivisionLabel }}</h2>
       <ul class="region-nav__list">
         {%- for sub in region.subdivisions %}
         <li><a href="{{ sub.url }}">{{ sub.name }} <span>{{ sub.count }}</span></a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+    {%- endif %}
+
+    {%- if region.cities and region.cities.length %}
+    <nav class="region-nav" aria-label="Cities in {{ region.name }}">
+      <h2 class="region-nav__title">Browse by city</h2>
+      <ul class="region-nav__list">
+        {%- for city in region.cities %}
+        <li><a href="{{ city.url }}">{{ city.name }} <span>{{ city.count }}</span></a></li>
         {%- endfor %}
       </ul>
     </nav>
@@ -108,6 +116,22 @@ eleventyComputed:
     </div>
   </div>
 </section>
+
+{%- if region.related and region.related.items.length %}
+<section class="section section--tight">
+  <div class="wrap">
+    <nav class="region-nav" aria-label="{{ region.related.title }}">
+      <h2 class="region-nav__title">{{ region.related.title }}</h2>
+      <ul class="region-nav__list">
+        {%- for item in region.related.items %}
+        <li><a href="{{ item.url }}">{{ item.name }} <span>{{ item.count }}</span></a></li>
+        {%- endfor %}
+        <li><a href="/doctors/">All regions <span>&rarr;</span></a></li>
+      </ul>
+    </nav>
+  </div>
+</section>
+{%- endif %}
 
 <section class="section section--tight">
   <div class="wrap">

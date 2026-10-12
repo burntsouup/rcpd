@@ -78,3 +78,21 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Tells Bing and other IndexNow search engines which pages changed. A failure here
+  # never affects the live site: the deploy above has already finished.
+  notify-search-engines:
+    needs: deploy
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Send the changed pages to IndexNow
+        run: node scripts/indexnow.js
