@@ -1,0 +1,61 @@
+name: Monthly listing check
+
+# Once a month, opens each doctor's page and looks for their name, then files one
+# GitHub issue with anything that needs a human look. It never edits the directory.
+# Run it by hand any time: Actions > Monthly listing check > Run workflow.
+
+on:
+  schedule:
+    - cron: "17 9 1 * *" # 09:17 UTC on the 1st of every month
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: listing-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check every listing
+        run: node scripts/check-listings.js --report listing-check-report.md --json listing-check-results.json --title listing-check-title.txt
+
+      - name: Keep the detailed results for a month
+        uses: actions/upload-artifact@v4
+        with:
+          name: listing-check-results
+          path: listing-check-results.json
+          retention-days: 30
+
+      - name: File the monthly report as an issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh label create listing-check --color 0e6359 --description "Monthly directory listing check" --force
+          NEW=$(gh issue create \
+            --title "$(cat listing-check-title.txt)" \
+            --label listing-check \
+            --body-file listing-check-report.md | grep -o '[0-9]*$')
+          # Close earlier reports so only the newest one is open.
+          for N in $(gh issue list --label listing-check --state open --json number -q '.[].number'); do
+            if [ "$N" != "$NEW" ]; then
+              gh issue close "$N" --comment "Replaced by #$NEW."
+            fi
+          done
