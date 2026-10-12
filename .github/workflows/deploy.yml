@@ -35,6 +35,31 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      # The directory data is checked before anything is built. If this fails, the
+      # deploy job never runs, so the live site keeps the last good version.
+      - name: Test the directory checker
+        run: npm test
+
+      - name: Get the previous directory data
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ -n "$BEFORE" ] && git cat-file -e "$BEFORE:data/doctors.csv" 2>/dev/null; then
+            git show "$BEFORE:data/doctors.csv" > "$RUNNER_TEMP/previous-doctors.csv"
+          fi
+
+      - name: Check the directory data
+        env:
+          COMMIT_MESSAGE: ${{ github.event.head_commit.message }}
+        run: |
+          ARGS=""
+          # Comparing with the previous version catches accidental mass deletions;
+          # put [allow-removals] in the commit message when removing many on purpose.
+          if [ -f "$RUNNER_TEMP/previous-doctors.csv" ] && [[ "$COMMIT_MESSAGE" != *"[allow-removals]"* ]]; then
+            ARGS="--baseline $RUNNER_TEMP/previous-doctors.csv"
+          fi
+          node scripts/validate-doctors.js $ARGS
+
       - name: Build site
         run: npm run build
 
