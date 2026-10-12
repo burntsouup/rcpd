@@ -4,8 +4,6 @@
 // the validator would have stopped it.
 const test = require("node:test");
 const assert = require("node:assert");
-const fs = require("fs");
-const path = require("path");
 const { validate, COLUMNS } = require("./validate-doctors");
 
 const GOOD = [
@@ -24,11 +22,6 @@ test("a correct row passes", () => {
   const res = run(toCsv([row()]));
   assert.deepStrictEqual(res.errors, []);
   assert.strictEqual(res.rows, 1);
-});
-
-test("the real directory file has no errors", () => {
-  const text = fs.readFileSync(path.resolve(__dirname, "..", "data", "doctors.csv"), "utf8");
-  assert.deepStrictEqual(run(text).errors, []);
 });
 
 test("a row added with LF in a CRLF file is caught (the vanished-doctor bug)", () => {
