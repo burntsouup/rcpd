@@ -1,7 +1,26 @@
 [
-  { "name": "Dr Dalia Larsen", "reason": "Links to a hospital treatment guide, not a personal profile" },
-  { "name": "Dr Yoichiro Aoyagi", "reason": "Japanese-language clinic page; name is not in Latin letters" },
-  { "name": "Assoc. Prof. Rumi Ueha", "reason": "Japanese-language department page; name is not in Latin letters" },
-  { "name": "Dr Chrisanthi Karapantzou", "reason": "Greek-language profile; name is not in Latin letters" },
-  { "name": "Mr Chaitanya Gadepalli", "reason": "Links to the hospital's location page; no individual profile exists" }
+  {
+    "name": "Dr Dalia Larsen",
+    "reason": "Links to a hospital treatment guide, not a personal profile"
+  },
+  {
+    "name": "Dr Yoichiro Aoyagi",
+    "reason": "Japanese-language clinic page; name is not in Latin letters"
+  },
+  {
+    "name": "Assoc. Prof. Rumi Ueha",
+    "reason": "Japanese-language department page; name is not in Latin letters"
+  },
+  {
+    "name": "Dr Chrisanthi Karapantzou",
+    "reason": "Greek-language profile; name is not in Latin letters"
+  },
+  {
+    "name": "Mr Chaitanya Gadepalli",
+    "reason": "Links to the hospital's location page; no individual profile exists"
+  },
+  {
+    "name": "Dr Eli Layous",
+    "reason": "Hebrew-language page; name is not in Latin letters"
+  }
 ]
