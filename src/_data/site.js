@@ -10,6 +10,8 @@ module.exports = {
   author: "Kyle Czernuszka",
   email: "czernuka@outlook.com",
   reddit: "https://www.reddit.com/r/noburp/",
+  // Optional donation page, shown as a quiet footer link. Empty = no link.
+  supportUrl: "https://buymeacoffee.com/burntsoup",
   // Where "suggest a doctor" / "report outdated info" links go. Empty formUrl =
   // pre-filled email to `email`; set it (e.g. a Google Form link) to use a form.
   // If you switch to a form, update the privacy page to match.
